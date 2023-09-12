@@ -1,0 +1,25 @@
+﻿<AML>
+ <Item type="Field" id="9B965D2CF4E14A0CAB6DD8987E964F50" action="add">
+  <border_width>0</border_width>
+  <display_length_unit>px</display_length_unit>
+  <field_type>checkbox</field_type>
+  <font_color>#333333</font_color>
+  <font_family>arial, helvetica, sans-serif</font_family>
+  <font_size>8pt</font_size>
+  <font_weight>bold</font_weight>
+  <is_disabled>0</is_disabled>
+  <is_visible>1</is_visible>
+  <label xml:lang="en">Show Help</label>
+  <label_position>right</label_position>
+  <list_no_blank>0</list_no_blank>
+  <propertytype_id keyed_name="show_help" type="Property">49D91FCB853542C4B1C45348513F8934</propertytype_id>
+  <show_help>1</show_help>
+  <sort_order>4736</sort_order>
+  <source_id keyed_name="301262F5D1384A6EA83BA88606E524CD" type="Body">301262F5D1384A6EA83BA88606E524CD</source_id>
+  <tab_index>5248</tab_index>
+  <tab_stop>1</tab_stop>
+  <x>562</x>
+  <y>282</y>
+  <name>show_help</name>
+ </Item>
+</AML>

@@ -1,0 +1,265 @@
+﻿<!DOCTYPE html>
+<!-- (c) Copyright by Aras Corporation, 2004-2014. -->
+<html>
+	<head>
+		<title></title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="stylesheet" type="text/css" href="../styles/common.min.css" />
+		<style type="text/css">
+			@import '../javascript/dojo/resources/dojo.css';
+			@import '../javascript/dijit/themes/claro/claro.css';
+			@import '../javascript/dojox/grid/resources/claroGrid.css';
+			@import '../javascript/dojox/form/resources/CheckedMultiSelect.css';
+			@import '../javascript/include.aspx?classes=common.css';
+			@import '../javascript/include.aspx?classes=ExtendedClassification.css';
+
+			html,
+			body {
+				height: 100%;
+				overflow: hidden;
+				font-family: Roboto, 'Noto Sans JP', Arial, sans-serif;
+			}
+
+			.aras-search-placeholder,
+			.aras-grid-section__x-class-bar-placeholder {
+				margin-bottom: 12px;
+			}
+
+			.aras-search-grid__toolbars {
+				flex-shrink: 0;
+			}
+
+			.aras-item-properties {
+				float: left;
+			}
+
+			.prop-value {
+				overflow: hidden;
+				display: inline-block;
+				text-overflow: ellipsis;
+				width: calc(100% - 80px);
+			}
+
+			.aras-search-grid {
+				box-sizing: border-box;
+				display: flex;
+				flex-direction: column;
+				height: 100%;
+				padding: 12px;
+				position: relative;
+			}
+
+			.aras-grid-section {
+				flex-grow: 1;
+				display: flex;
+				flex-direction: column;
+				height: calc(100% - 42px);
+				overflow: hidden;
+			}
+
+			.aras-grid-section__container {
+				overflow: hidden;
+			}
+
+			.aras-grid-container__grid {
+				height: calc(100% - 46px);
+			}
+
+			.aras-grid-section__formpreview-splitter {
+				margin-top: 12px;
+			}
+
+			.aras-grid-section__formpreview-container {
+				flex-grow: 1;
+			}
+
+			.aras-grid-section__formpreview-container iframe {
+				width: 100%;
+				height: 100%;
+			}
+
+			.hideImportant {
+				display: none !important;
+			}
+		</style>
+
+		<script>
+			var topWnd = parent;
+			//note, that aras is used in search_container.js and SearchGridObject.js. Do not rename it.
+			var aras = (arasObj = topWnd.aras);
+			var activeToolbar = topWnd.activeToolbar;
+		</script>
+		<script
+			type="text/javascript"
+			src="../javascript/include.aspx?classes=ArasModules"
+		></script>
+		<script type="text/javascript" src="../jsBundles/cui.js"></script>
+		<script type="module" src="../jsBundles/excelConverter.es.js"></script>
+		<script
+			type="text/javascript"
+			src="../javascript/include.aspx?classes=/dojo.js"
+			data-dojo-config="isDebug: false, async: true,  parseOnLoad: false, baseUrl:'../javascript/dojo'"
+		></script>
+		<script
+			type="text/javascript"
+			src="../javascript/dojo/searchGrid.js"
+		></script>
+		<script
+			type="text/javascript"
+			src="../javascript/include.aspx?classes=ScriptSet2"
+		></script>
+		<script
+			type="text/javascript"
+			src="../javascript/include.aspx?classes=ScriptSet6"
+		></script>
+		<script
+			type="text/javascript"
+			src="../javascript/include.aspx?classes=Dependencies,MainGridFactory,ToolbarWrapper,ColumnSelectionFactory,ModulesHelper"
+		></script>
+		<script
+			type="text/javascript"
+			src="../javascript/include.aspx?files=ItemsGridAsyncSoap,ItemsGridAsyncController,itemsGridCommands"
+		></script>
+		<script type="text/javascript">
+			initializeItemsGridCommandsFunctions(window);
+			initializeSearchGridCommandsFuntions(window);
+			window.addEventListener('DOMContentLoaded', function () {
+				ArasModules.soap(null, {
+					async: true,
+					method: 'ApplyItem',
+					url: aras.getServerURL(),
+					headers: aras.getHttpHeadersForSoapMessage('ApplyItem')
+				});
+			});
+
+			// dojo/searchGrid is a layer-bundle of dojo scripts for grid
+			require(['dojo/searchGrid', 'Aras/Client/Controls/Public/GridContainer']);
+			require(['dojo/ready'], function (ready) {
+				ready(async function () {
+					await window.initializeSearchViewLayout();
+				});
+			});
+		</script>
+
+		<script type="text/javascript">
+			searchLocation = 'Main Grid';
+			isMainGrid = true; //this variable is defined in SearchGridObject.js and search_container.js
+
+			// ===== variables section ============
+			var isItemsGrid = true; //flag to identify itemsGrid.html
+			const searchParams = new URLSearchParams(window.location.search.slice(1));
+			var itemTypeID = searchParams.get('itemtypeID');
+			var itemTypeName = searchParams.get('itemtypeName');
+			var ItemTypeGrid = MainGridFactory.Create(itemTypeName);
+			var visiblePropNds; //array of properties nodes which are visible in grid
+			var addRowInProgress_Number = 0;
+			var callbackF_afterAddRow = null;
+			var varName_queryDate;
+			var isVersionableIT;
+			var asyncController = new ItemsGridAsyncController(aras, window);
+			var grid = null;
+			var FilePropertyManager = null;
+			let columnSelectionMediator;
+			//Global cache item files
+			var FilesCache = new Object();
+			// ===== end of variables section ============
+
+			if (!onInitialize()) {
+				onload = '';
+				onresize = '';
+				onbeforeunload = '';
+				document.write(
+					'	<\/script>\n' +
+						'	<body>\n' +
+						'		<center>' +
+						aras.getResource(
+							'',
+							'itemsgrid.item_type_with_id_not_found',
+							itemTypeID
+						) +
+						'<\/center>' +
+						'	<\/body>' +
+						'<\/html>'
+				);
+			}
+
+			aras.setWindowLangAttribute(window);
+			aras.setWindowTitle(
+				window,
+				aras.getResource('', 'frames.search_grid', itemTypeName)
+			);
+
+			// disable drop file (chrome reload page ar download the file)
+			window.addEventListener(
+				'drop',
+				function (e) {
+					e.preventDefault();
+				},
+				false
+			);
+			window.addEventListener(
+				'dragover',
+				function (e) {
+					e.preventDefault();
+				},
+				false
+			);
+
+			window.addEventListener('load', function (e) {
+				var propsBar = document.getElementById('itemProperties');
+				propsBar.querySelector('h3').textContent = aras.getResource(
+					'',
+					'common.properties'
+				);
+			});
+		</script>
+	</head>
+	<body class="claro">
+		<div
+			id="itemProperties"
+			class="table-col properties-block hideImportant aras-item-properties"
+		>
+			<div class="side-header aras-item-properties__header">
+				<h3></h3>
+			</div>
+			<div></div>
+		</div>
+		<div id="grid_table" class="aras-search-grid">
+			<div class="menu-block aras-search-grid__menu" id="menulayout"></div>
+			<div
+				id="searchview-toolbars"
+				class="aras-search-grid__toolbars aras-bordered-toolbar-container"
+			></div>
+			<div class="grid-section aras-search-grid__section aras-grid-section">
+				<div
+					id="searchPlaceholder"
+					class="aras-search-placeholder aras-search-placeholder_hidden"
+				></div>
+				<div
+					id="xClassBarPlaceholder"
+					class="hidden aras-grid-section__x-class-bar-placeholder"
+				></div>
+				<div
+					id="grid_container"
+					class="aras-grid-section__container aras-grid-container"
+				>
+					<div id="gridTD" class="aras-grid-container__grid"></div>
+					<aras-pagination></aras-pagination>
+				</div>
+				<aras-splitter
+					id="formpreview_splitter"
+					class="aras-grid-section__formpreview-splitter"
+				></aras-splitter>
+				<div
+					id="formpreview_container"
+					class="aras-grid-section__formpreview-container"
+				>
+					<iframe frameborder="0"></iframe>
+				</div>
+			</div>
+		</div>
+		<iframe id="dimmer_spinner" src="spinner.html"></iframe>
+		<!-- Add by tz 2023/6/6 表格列帮助说明功能 -->
+		<aras-tooltip></aras-tooltip>
+	</body>
+</html>

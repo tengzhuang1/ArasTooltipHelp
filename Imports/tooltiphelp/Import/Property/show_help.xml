@@ -1,0 +1,21 @@
+﻿<AML>
+ <Item type="Property" id="49D91FCB853542C4B1C45348513F8934" action="add">
+  <column_alignment>left</column_alignment>
+  <data_type>boolean</data_type>
+  <default_value xml:lang="en">1</default_value>
+  <is_federated>0</is_federated>
+  <is_hidden>1</is_hidden>
+  <is_hidden2>1</is_hidden2>
+  <is_indexed>0</is_indexed>
+  <is_keyed>0</is_keyed>
+  <is_multi_valued>0</is_multi_valued>
+  <is_required>1</is_required>
+  <label xml:lang="en">Show Help</label>
+  <range_inclusive>0</range_inclusive>
+  <readonly>0</readonly>
+  <sort_order>5248</sort_order>
+  <source_id keyed_name="Field" type="ItemType" name="Field">0BB5B81FEB37475BB9C779408080DB61</source_id>
+  <track_history>0</track_history>
+  <name>show_help</name>
+ </Item>
+</AML>

@@ -1,0 +1,109 @@
+@import (reference) '../core/variables';
+@import (reference) '../core/tooltip';
+
+:host([shown]) {
+	opacity: 1;
+	visibility: visible;
+}
+:host([hover]) {
+	transition-delay: 0s;
+	transition-duration: 0s;
+}
+
+:host([arrow]) {
+	&:before {
+		display: block;
+	}
+}
+:host([position='top']) {
+	&:before {
+		bottom: auto;
+		left: calc(50% - var(--shift, 0px));
+		top: 100%;
+		.svg-arrow(@tooltip-bg, up);
+		transform: translate(-50%, -1px);
+	}
+}
+:host([position='right']) {
+	&:before {
+		bottom: auto;
+		left: auto;
+		right: 100%;
+		top: calc(50% - var(--shift, 0px));
+		.svg-arrow(@tooltip-bg, right);
+		transform: translate(1px, -50%);
+	}
+}
+:host([position='left']) {
+	&:before {
+		bottom: auto;
+		left: 100%;
+		top: calc(50% - var(--shift, 0px));
+		.svg-arrow(@tooltip-bg, left);
+		transform: translate(-1px, -50%);
+	}
+}
+:host([position='bottom']) {
+	&:before {
+		bottom: 100%;
+		left: calc(50% - var(--shift, 0px));
+		.svg-arrow(@tooltip-bg, down);
+		transform: translate(-50%, 1px);
+	}
+}
+:host {
+	.commonTooltipStyles();
+	.showTooltip();
+	.defaultTooltipTransform();
+	.base-effects();
+	box-sizing: border-box;
+	max-width: .pxToRem(224px) [ @rem ];
+	width: max-content;
+	opacity: 0;
+	visibility: hidden;
+	position: fixed;
+	z-index: 999;
+	pointer-events: auto;
+	padding: 8px;
+	transition-property: opacity, visibility;
+	transition-delay: 0s;
+	&:before {
+		position: absolute;
+		transform-origin: top;
+		display: none;
+		content: '';
+	}
+	&::before {
+		opacity: 1;
+		pointer-events: auto;
+	}
+
+	.aras-tooltip-component {
+		&__help-text {
+			display: inline-flex;
+			color: @blue-5;
+			cursor: pointer;
+			margin-top: 8px;
+			font: @font-12-med;
+			align-items: center;
+			&:hover {
+				.aras-tooltip-component__show-dialog {
+					text-decoration: underline;
+				}
+			}
+			& > .aras-icon-question-mark {
+				margin: 0 4px 1px 0;
+			}
+		}
+		&__title {
+			font: @font-12-bold;
+			line-height: 1.2;
+		}
+		&__help-tooltip-text {
+			font: @font-12-reg;
+			line-height: 1.2;
+			word-wrap: break-word;
+			margin-top: 8px;
+		}
+	}
+}

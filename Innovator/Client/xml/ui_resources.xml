@@ -1,0 +1,1102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ui_resources>
+	<!-- +++++ Common +++++ -->
+	<resource key="common.access_denied" value="Access Denied"/>
+	<resource key="common.an_internal_error_has_occured" value="An internal error has occured."/>
+	<resource key="common.client_side_err" value="Client Side Error"/>
+	<resource key="common.lock" value="Claim"/>
+	<resource key="common.view" value="Open"/>
+	<resource key="common.edit" value="Edit"/>
+	<resource key="common.confirm_title" value="Confirm"/>
+	<resource key="common.new" value="New"/>
+	<resource key="common.delete" value="Delete All Versions"/>
+	<resource key="common.copy" value="Copy"/>
+	<resource key="common.copy_notification_id" value="Item ID copied to clipboard."/>
+	<resource key="common.copy_notification_link" value="Item link copied to clipboard."/>
+	<resource key="common.copy_id" value="Copy ID"/>
+	<resource key="common.copy_link" value="Copy Link"/>
+	<resource key="common.copy_link_latest" value="Latest"/>
+	<resource key="common.copy_link_latest_released" value="Latest Released"/>
+	<resource key="common.itemtype_not_available" value="This ItemType is not available for you. Please, contact your Administrator."/>
+	<resource key="common.paste" value="Paste"/>
+	<resource key="common.paste_special" value="Paste Special"/>
+	<resource key="common.prompt_title" value="Prompt"/>
+	<resource key="common.prompt_label" value="Value"/>
+	<resource key="common.unlock" value="Unclaim"/>
+	<resource key="common.unpin" value="Unpin"/>
+	<resource key="common.whereused" value="Where Used"/>
+	<resource key="common.cntxt_menu.add_break" value="Add Break"/>
+	<resource key="common.cntxt_menu.remove_break" value="Remove Break"/>
+	<resource key="common.change_pwd" value="Change Password"/>
+	<resource key="common.pwd_expired" value="Your password has expired"/>
+	<resource key="common.old_pwd" value="Old Password"/>
+	<resource key="common.new_pwd" value="New Password"/>
+	<resource key="common.confirm_pwd" value="Confirm New Password"/>
+	<resource key="common.check_pwd_confirmation" value="Check New Password And Its Confirmation."/>
+	<resource key="common.pwd_empty" value="Password cannot be empty"/>
+	<resource key="common.undo_discard_changes" value="Undo will discard your changes. Are you sure?"/>
+	<resource key="common.discard_confirmationtitle" value="Discard Changes"/>
+	<resource key="common.discard_confirmationmessage" value="Unsaved changes will be lost."/>
+	<resource key="common.apply" value="Apply"/>
+	<resource key="common.ok" value="OK"/>
+	<resource key="common.cancel" value="Cancel"/>
+	<resource key="common.close" value="Close"/>
+	<resource key="common.clear" value="Clear"/>
+	<resource key="common.clear_all" value="Clear All"/>
+	<resource key="common.reset" value="Reset"/>
+	<resource key="common.save" value="Save"/>
+	<resource key="common.discard" value="Discard"/>
+	<resource key="common.continue" value="Continue"/>
+	<resource key="common.yes" value="Yes"/>
+	<resource key="common.no" value="No"/>
+	<resource key="common.restricted_property_warning" value="Restricted"/>
+	<resource key="common.no_history_containers_found" value="No history containers found."/>
+	<resource key="common.warning" value="Warning."/>
+	<resource key="common.notification" value="Notification"/>
+	<resource key="common.user_preference" value="User Preference"/>
+	<resource key="common.contents" value="Contents"/>
+	<resource key="common.properties" value="Properties"/>
+	<resource key="common.web_request_error" value="Error {0} on requesting {1}: {2}"/>
+	<resource key="common.options_select" value="{0} options select"/>
+	<resource key="common.claimed" value="Claimed"/>
+	<resource key="common.no_label" value="No label"/>
+	<resource key="common.references_were_reset" value="Preferences were reset"/>
+	<resource key="common.select_items" value="Select Items"/>
+	<resource key="common.items_selected" value="{0} item(s) selected"/>
+	<resource key="common.refresh" value="Refresh"/>
+	<resource key="common.layout_saved" value="Layout Saved"/>
+	<resource key="common.default_layout_updated" value="Default Layout Updated"/>
+	<resource key="common.failed_to_save_layout" value="Failed to Save Layout"/>
+	<resource key="common.value_invalid_for" value="Value &quot;{0}&quot; is invalid for &quot;{1}&quot;."/>
+	<resource key="common.required" value="Required"/>
+	<resource key="common.does_not_exist" value="{0} does not exist"/>
+	<resource key="confirm_delete.delete_title" value="Confirm Delete"/>
+	<resource key="confirm_delete.purge_title" value="Confirm Purge"/>
+	<resource key="confirm_delete.delete" value="Delete"/>
+	<resource key="confirm_delete.purge" value="Purge"/>
+	<resource key="confirm_delete.delete_all" value="Delete All"/>
+	<resource key="confirm_delete.purge_all" value="Purge All"/>
+	<resource key="confirm_delete.skip" value="Skip"/>
+	<resource key="confirm_delete.purge_message" value="Purge {0} &quot;{1}&quot;. Are you sure?"/>
+	<resource key="confirm_delete.delete_message" value="Deleting {0} &quot;{1}&quot;. Are you sure?"/>
+	<!--       Common       -->
+	<!-- +++++ Client/javascript/aras_object.js +++++ -->
+	<!-- +++++ Client/javascript/sp_functions.js +++++ -->
+	<resource key="sp_functions.incompatible_functions" value="There are incompatible client methods!"/>
+	<!-- +++++ Client/javascript/sp_functions.js +++++ -->
+	<resource key="aras_object.fault_loading" value="Fault loading {0}: {1}"/>
+	<resource key="aras_object.user_not_found" value="User is not found."/>
+	<resource key="aras_object.item_not_found" value="Item type '{0}' with id '{1}' is not found."/>
+	<resource key="aras_object.value_property_invalid_must_be_integer" value="Value of the property is invalid. It must be Integer."/>
+	<resource key="aras_object.value_property_invalid_must_be_unsigned_big_integer" value="Value of the property is invalid. It must be Unsigned Big Integer."/>
+	<resource key="aras_object.validate_user_failed_communicate_with_the_server" value="Failed to communicate with the server"/>
+	<resource key="aras_object.new_password_not_set" value="New password is not set."/>
+	<resource key="aras_object.validate_user_wrong_server_response" value="Wrong server response"/>
+	<resource key="aras_object.error_in_evalmethod" value="Error in evalMethod
+
+the Method: '{0}'
+must be JavaScript."/>
+	<resource key="aras_object.method_failed" value="The method '{0}' failed."/>
+	<resource key="aras_object.aras_object" value="aras_object: &quot;{0}&quot; : &quot;{1}&quot;"/>
+	<resource key="aras_object.erroe_eval_item_method" value="Error in evalItemMethod
+
+the Method: '{0}'
+must be JavaScript."/>
+	<resource key="aras_object.failed_get_report" value="Failed to get the report."/>
+	<resource key="aras_object.invalid_soap_message" value="Server returned invalid SOAP message."/>
+	<resource key="aras_object.failed_copy_related_item" value="Failed to copy the related item: {0}"/>
+	<resource key="aras_object.failed_get_source_item" value="Failed to get the source item."/>
+	<resource key="aras_object.incorrect_parameter" value="incorrect parameter !"/>
+	<resource key="aras_object.not_function" value="not a function !"/>
+	<resource key="aras_object.copy_operation_failed" value="The copy operation failed: {0}"/>
+	<resource key="aras_object.you_attempting_paste_different_relationship_types" value="You are attempting to Paste '{0}' relationship type
+into '{1}' relationship.
+They are different relationship types. Do you wish to proceed?"/>
+	<resource key="aras_object.value_property _must_be _boolean" value="Value of the property must be boolean."/>
+	<resource key="aras_object.user_abort" value="user abort"/>
+	<resource key="aras_object.value_property_invalid_contains_incorrect_symbols" value="Value of the property is invalid. It contains incorrect symbols."/>
+	<resource key="aras_object.value_property_invalid_must_be_decimal" value="The value you entered is incorrect. Please enter a value that meets the following conditions: decimal number, precision {0}, scale {1}."/>
+	<resource key="aras_object.value_property_invalid_must_be_decimal_any" value="any"/>
+	<resource key="aras_object.value_property_invalid_must_be_date" value="Value of the property is invalid. It must be valid Date. "/>
+	<resource key="aras_object.value_property_invalid_must_be_float" value="Value of the property is invalid. It must be Float."/>
+	<resource key="aras_object.length_image_property_cannot_be_larger_128_symbols" value="Length of property of type &quot;Image&quot; cannot be larger than 128 symbols."/>
+	<resource key="aras_object.value_property_invalid_must_be_item_id" value="Value of the property is invalid. It must be Item ID."/>
+	<resource key="aras_object.value_property_invalid_must_be_md5" value="Value of the property is invalid. It must be MD5."/>
+	<resource key="aras_object.length_properties_value_canot_be_larger" value="Length of the property's value cannot be larger than &quot;{0}&quot; symbols."/>
+	<resource key="aras_object.value_property_invalid_must_correspond_with_pattern" value="Invalid character sequence (pattern = {0})"/>
+	<resource key="aras_object.edit_again" value="Edit again?"/>
+	<resource key="aras_object.nothing_to_add" value="nothing to add"/>
+	<resource key="aras_object.already_in_cache" value="already in cache"/>
+	<resource key="aras_object.nothing_to_update" value="nothing to update"/>
+	<resource key="aras_object.nothing_to_remove" value="nothing to remove"/>
+	<resource key="aras_object.not_supported_criteria" value="Not supported criteria (&quot;{0}&quot;)."/>
+	<resource key="aras_object.invalid_parameter_propertydef_data_type" value="Invalid parameter propertyDef.data_type."/>
+	<resource key="aras_object.about_aras_innovator" value="About"/>
+	<resource key="aras_object.error" value="Error"/>
+	<resource key="aras_object.hide_details" value="Hide Details"/>
+	<resource key="aras_object.show_details" value="Show Details"/>
+	<resource key="aras_object.copy_buffer" value="Copy Buffer"/>
+	<resource key="aras_object.technical_message" value="Technical Message"/>
+	<resource key="aras_object.stack_trace" value="Stack Trace"/>
+	<resource key="aras_object.report_with_label" value="Report: {0}"/>
+	<resource key="aras_object.export2excel_file_prefix" value="Book"/>
+	<resource key="aras_object.export2word_file_prefix" value="Doc"/>
+	<!--       Client/javascript/aras_object.js     -->
+	<!-- +++++ Client/javascript/ConfigurableGrid.js +++++ -->
+	<resource key="configurable_grid.relationships_number_cannot_be_0" value="ConfigurableGrid.createItemByXPath: Relationships number cannot be 0"/>
+	<resource key="configurable_grid.type_of_root_item_cannot_be_determined" value="Type of root item cannot be determined. Please check Your grid defintion."/>
+	<resource key="configurable_grid.value_invalid_use_search_dialog" value="Value &quot;{0}&quot;  is invalid for &quot;{1}&quot;. Use F2 to invoke Search Dialog."/>
+	<resource key="configurable_grid.use_f2_invoke_color_dialog" value="Use F2 to invoke Color Dialog."/>
+	<resource key="configurable_grid.use_f2_invoke_date_dialog" value="Use F2 to invoke Date Dialog."/>
+	<resource key="configurable_grid.this_item_not_editable" value="This &quot;{0}&quot; is not editable"/>
+	<resource key="configurable_grid.no_column_with_index_in_grid" value="There is no column with index &quot;{0}&quot; in Grid definition"/>
+	<resource key="configurable_grid.deleting_sure" value="Deleting &quot;{0}&quot; &quot;{1}&quot;. Are you sure?"/>
+	<resource key="configurable_grid.remove_form_configuration" value="Remove &quot;{0}&quot; &quot;{1}&quot; from configuration. Are you sure?"/>
+	<resource key="configurable_grid.inset_ignored_federated_column" value="Insert is ignored because this is federated column"/>
+	<resource key="configurable_grid.must_copy_row_before_paste" value="You must first copy a row in this document before using the Paste function."/>
+	<resource key="configurable_grid.must_select_cell_from_same_level" value="You must select a cell that is from the same level from which you initiated the copy."/>
+	<resource key="configurable_grid.no_match_found" value="No match found"/>
+	<resource key="configurable_grid.field_read_only" value="The field is read-only"/>
+	<resource key="configurable_grid.replace_not_allowed" value="Replace is not allowed here"/>
+	<resource key="configurable_grid.item_cannot_uniquely_defined" value="An item cannot be uniquely defined"/>
+	<resource key="configurable_grid.value_invalid" value="The value is invalid."/>
+	<resource key="configurable_grid.item_type_cannot_be_copied" value="Item (type=&quot;{0}&quot;, id=&quot;{1}&quot;) cannot be copied by reference because of its action=&quot;{2}&quot;"/>
+	<resource key="configurable_grid.no_method_in_configurablegrid" value="There is no method &quot;{0}&quot; in ConfigurableGrid"/>
+	<resource key="configurable_grid.error_loading_grid" value="Error Loading grid"/>
+	<!--       Client/javascript/ConfigurableGrid.js     -->
+	<!-- +++++ Client/javascript/deepLinking +++++ -->
+	<resource key="deep_link.start_opening_item" value="Start opening item in main window."/>
+	<resource key="deep_link.error_open_item" value="Can not open this item from URL. Check your link."/>
+	<resource key="deep_link.item_is_opened" value="{0} is now open in your existing session."/>
+	<resource key="deep_link.item_alredy_is_opened" value="{0} is already opened in your existing session."/>
+	<!--       Client/javascript/deepLinking     -->
+	<!-- +++++ Client/javascript/item_methods.js +++++ -->
+	<resource key="item_methods.located_item_type_not_exist" value="The &quot;Located&quot; ItemType does not exist."/>
+	<resource key="item_methods.no_defualt_vault_sever" value="You have no default Vault server."/>
+	<resource key="item_methods.event_handler_failed" value="Internal Error: event handler failed."/>
+	<resource key="item_methods.event_handler_failed_with_message" value="Event handler failed with message: &quot;{0}&quot;"/>
+	<resource key="item_methods.items_added_successfully" value="Items added successfully "/>
+	<resource key="item_methods.item_added_successfully" value="Item added successfully "/>
+	<resource key="item_methods.package_with_such_name_already_exist" value="Package Definition with name &quot;{0}&quot; already exists"/>
+	<resource key="item_methods.unable_add_package_with_name" value="Unable to add package with name &quot;{0}&quot;"/>
+	<resource key="item_methods.recursion_not_allowed_here" value="Recursion is not allowed here"/>
+	<resource key="item_methods.failed_get_item_type" value="Failed to get the &quot;{0}&quot; ItemType."/>
+	<resource key="item_methods.xpathresult_of_item_returned_null" value="item_methods: XPathResult of Item returned null."/>
+	<resource key="item_methods.fault_loading" value="Fault loading the &quot;{0}&quot;: {1}"/>
+	<resource key="item_methods.add_selected_items_to_a_package" value="Add selected item(s) to a package"/>
+	<resource key="item_methods.selected_package_from_list" value="Please select a package from the list"/>
+	<resource key="item_methods.select_package" value="select package"/>
+	<resource key="item_methods.create_new" value="create new"/>
+	<resource key="item_methods.create_new_package" value="Create new package"/>
+	<resource key="item_methods.package_name" value="Package name:"/>
+	<resource key="item_methods.dependency" value="Dependency:"/>
+	<resource key="item_methods.cannot_close_item_window" value="Unable to close current item window."/>
+	<resource key="item_methods.file_moved_or_renamed" value="File &quot;{0}&quot; is moved or renamed."/>
+	<!--       Client/javascript/item_methods.js     -->
+	<!-- +++++ Client/javascript/item_methodsEx.js +++++ -->
+	<resource key="item_methods_ex.item_type_name_cannot_be_blank" value="The name of the ItemType cannot be left blank."/>
+	<resource key="item_methods_ex.length_of_property_not_specified" value="The length of the &quot;{0}&quot; property is not specified."/>
+	<resource key="item_methods_ex.length_of_property_invalid" value="The length of the &quot;{0}&quot; property is invalid: {1} "/>
+	<resource key="item_methods_ex.property_data_source_not_specified" value="The data_source of the &quot;{0}&quot; property is not specified."/>
+	<resource key="item_methods_ex.fliter_list_property_has_to_have_pattern" value="The property &quot;{0}&quot; is of type Filter List and has to have a pattern specified."/>
+	<resource key="item_methods_ex.filter_list_property_has_wrong_pattern" value="Filter list property &quot;{0}&quot; has wrong pattern !!!
+There is no such property &quot;{1}&quot; in the ItemType."/>
+	<resource key="item_methods_ex.property_for_pattern_cannot_property_itself" value="The property specified for the pattern of the &quot;{0}&quot; property cannot be the &quot;{0}&quot; property itself."/>
+	<resource key="item_methods_ex.field_required_default_will_be_used" value="The &quot;{0}&quot; property is required.
+You must provide a value for this property before saving.
+Default &quot;{1}&quot; will be used."/>
+	<resource key="item_methods_ex.field_required_provide_value" value="The &quot;{0}&quot; field is required. You must provide a value for this field before saving."/>
+	<resource key="item_methods_ex.maximum_length_characters_for_property" value="The maximum length for property &quot;{0}&quot; is {1} characters.&#10;You've entered {2} characters.&#10;Please, check your input."/>
+	<resource key="item_methods_ex.item_type_has_property_with_no_name" value="ItemType &quot;{0}&quot; has a property with no name. Please provide a name and save again."/>
+	<resource key="item_methods_ex.vault_sever_not_specified" value="The Vault Server is not specified for You."/>
+	<resource key="item_methods_ex.failed_upload_file" value="Failed to upload the files.
+
+Is the specified Vault Server URL: &quot;{0}&quot; correct ?"/>
+	<resource key="item_methods_ex.internal_error_occured" value="An internal error has occured."/>
+	<resource key="item_methods_ex.adding" value="   Adding &quot;{0}&quot;..."/>
+	<resource key="item_methods_ex.versioning" value="   Versioning &quot;{0}&quot;..."/>
+	<resource key="item_methods_ex.updating" value="   Updating &quot;{0}&quot;..."/>
+	<resource key="item_methods_ex.item_saved_successfully" value="Item {0}saved successfully."/>
+	<resource key="item_methods_ex.failed_download_file_url_empty" value="Failed to download the file. The file URL is empty."/>
+	<resource key="item_methods_ex.locking_it_lose_changes" value="Locking this &quot;{0}&quot; will cause you\r\nto lose your changes in the source item.\r\n\r\nClick OK to lock the item and lose your changes\r\nor Cancel to leave the item unlocked."/>
+	<resource key="item_methods_ex.failed_get_item_type_from_sever" value="Failed to get the &quot;{0}&quot; ItemType from the Server."/>
+	<resource key="item_methods_ex.failed_unlock_item_type" value="Failed to unlock the {0} ItemType."/>
+	<resource key="item_methods_ex.unsaved_changes" value="Unsaved Changes"/>
+	<resource key="item_methods_ex.changes_not_saved" value="Changes have not been saved. What do you want to do?"/>
+	<resource key="item_methods_ex.save_your_changes" value="To keep changes from {0} &quot;{1}&quot;?"/>
+	<resource key="item_methods_ex.failed_get_item_type_from_server" value="Failed to get the {0} ItemType from the Server."/>
+	<resource key="item_methods_ex.failed_get_file_vault_could_not_be_located" value="Failed to get the File: Vault could not be located."/>
+	<resource key="item_methods_ex.save_first" value="Save First"/>
+	<resource key="item_methods_ex.item_type_should_have_discussiontemplate_for_root_class_path" value="Enabled for Secure Social ItemType should have Discussion Template for Root class."/>
+	<resource key="item_methods_ex.unlocking_discard_your_changes" value="Unlocking {0} &quot;{1}&quot; will discard all your changes.
+Are you sure ?"/>
+	<!--       Client/javascript/item_methodsEx.js     -->
+	<!-- +++++ Client/javascript/item_window.js +++++ -->
+	<resource key="item_window.nothing_to_undo" value="Nothing to undo."/>
+	<resource key="item_window.failed_download_file" value="Failed to download the file."/>
+	<!--       Client/javascript/item_window.js    -->
+	<!-- +++++ Client/javascript/itemtype_methods.js +++++ -->
+	<resource key="itemtype_methods.view_to_rebuild_not_specified" value="The view to be rebuilt was not specified."/>
+	<!--       Client/javascript/itemtype_methods.js    -->
+	<!-- +++++ Client/javascript/promoteDialog.js +++++ -->
+	<resource key="promote_dialog.promote_not_finished" value="Promote is not finished yet.
+It is recommended that You wait untill promote is finished."/>
+	<!--       Client/javascript/promoteDialog.js    -->
+	<!-- +++++ Client/javascript/search_container.js +++++ -->
+	<resource key="search_container.aml_is_not_compatible_with_new_search_mode" value="Switching to {0} will clear some of your search criteria."/>
+	<resource key="search_container.aml_is_not_compatible_with_new_search_mode2" value="The selected search could not be shown in {0} mode.
+Would you like to switch to {1} search mode?"/>
+	<resource key="search_container.aml_is_not_compatible_with_simple_search_mode" value="The selected search cannot be shown in Simple Search mode. Display in AML Search mode instead?"/>
+	<!-- +++++ Client/javascript/search_container.js +++++ -->
+	<!-- +++++ Client/javascript/search_grid.js +++++ -->
+	<resource key="search.invalid_criteria" value="Invalid search criteria. Edit again?"/>
+	<resource key="search.permissions_limited_suffix" value="Permissions Limited"/>
+	<resource key="search.neither_input_item_type_name_nor_id_specified" value="Neither input Item Type name nor id is specified."/>
+	<resource key="search.page_should_positive_integer" value="The page should be a positive integer."/>
+	<resource key="search.page_size_should_positive_integer" value="The page size should be a positive integer."/>
+	<resource key="search.max_search_value_should_positive_integer" value="Max search value should be a positive integer."/>
+	<resource key="search.please_enter_valid_as_of_date" value="Please enter a valid As Of date."/>
+	<resource key="search.n_items_found" value="{0} Items found."/>
+	<resource key="search.how_much_items_max_reached" value="Max Reached"/>
+	<resource key="search.how_much_items_on_page" value="Items {0}-{1} of {2}. Page {3} of {4}"/>
+	<resource key="search.bad_xml" value="Bad xml: {0}"/>
+	<resource key="search.set_parameter_value" value="Set Parameter Value"/>
+	<resource key="search.saved_search_already_exists" value="Search {0} for type {1} already exists. Would you like to overwrite it?"/>
+	<resource key="search.warning" value="Search Mode Warning"/>
+	<resource key="search.not_all_parameters_filled" value="Please fill all the parameters."/>
+	<resource key="search.parameter_label" value="Parameter"/>
+	<resource key="search.favorite_search_title" value="Favorite Search"/>
+	<!--       Client/javascript/search_grid.js    -->
+	<!-- +++++ Client/javascript/SearchGridObject.js +++++ -->
+	<resource key="search_grid_object.lookup_not_available" value="Lookup for {0} is not available."/>
+	<!--       Client/javascript/SearchGridObject.js    -->
+	<!-- +++++ Client/javascript/soap_object.js +++++ -->
+	<resource key="soap_object.login_again" value="Login Again"/>
+	<resource key="soap_object.logout" value="Logout"/>
+	<resource key="soap_object.session_has_expired" value="Your session has expired. Please, login to continue"/>
+	<resource key="soap_object.session_has_expired_unsaved_data" value="Your session has expired. To continue, please login again.\n\nWarning: one or more items have unsaved changes that will be lost if you logout."/>
+	<resource key="soap_object.unauthorized_error" value="Authentication failed. Please, login to continue"/>
+	<!--       Client/javascript/soap_object.js    -->
+	<!-- +++++ Client/javascript/ui_methods.js +++++ -->
+	<resource key="ui_methods.item_cannot_defined_uniquely" value="Item cannot be defined uniquely.
+The first match is used.
+You may use search dialog (press F2) to define the item precisely"/>
+	<resource key="ui_methods.parameter_element_not_specified" value="Parameter &quot;element&quot; is not specified"/>
+	<resource key="ui_methods.cannot_determine_tophelpurl" value="Cannot determine TopHelpUrl"/>
+	<resource key="ui_methods.value" value="Value"/>
+	<resource key="ui_methods.access_restricted_or_not_exist" value="Access to {0} is Restricted or {0} doesn't exist. Please, contact your System Administrator."/>
+	<!--       Client/javascript/ui_methods.js    -->
+	<!-- +++++ Client/javascript/ui_methodsEx.js +++++ -->
+	<resource key="ui_methods_ex.failed_to_open_new_window" value="Failed to open a new window. Please check that pop-ups are not being blocked and that your browser is up to date"/>
+	<resource key="ui_methods_ex.specified_view_mode_invalid" value="The specified view mode &quot;{0}&quot; is invalid.
+
+The supported view modes are:
+&quot;tab view&quot;, &quot;tree view&quot;, &quot;openFile&quot;."/>
+	<resource key="ui_methods_ex.failed_get_file" value="Failed to get the File."/>
+	<resource key="ui_methods_ex.failed_to_open_file" value="You have insufficient permissions to open the File."/>
+	<resource key="ui_methods_ex.function_update_root_item_not_implemented" value="The function updateRootItem is not implemented."/>
+	<resource key="ui_methods_ex.item_type_not_found" value="ItemType &quot;{0}&quot; not found."/>
+	<resource key="ui_methods_ex.body_of_form_missing" value="The body of the form is missing."/>
+	<resource key="ui_methods_ex.failed_get_parent_document_for_form" value="Failed to get the parent document for the form."/>
+	<resource key="ui_methods_ex.select_an_image" value="Select an image..."/>
+	<resource key="item_info_table.created_by_id_txt" value="Created By:"/>
+	<resource key="item_info_table.created_on_txt" value="Created On:"/>
+	<resource key="item_info_table.modified_by_id_txt" value="Modified By:"/>
+	<resource key="item_info_table.modified_on_txt" value="Modified On:"/>
+	<resource key="item_info_table.locked_by_id_txt" value="Locked By:"/>
+	<resource key="item_info_table.major_rev_txt" value="Major Rev:"/>
+	<resource key="item_info_table.release_date_txt" value="Release Date:"/>
+	<resource key="item_info_table.effective_date_txt" value="Effective Date:"/>
+	<resource key="item_info_table.generation_txt" value="Generation:"/>
+	<resource key="item_info_table.state_txt" value="State:"/>
+	<resource key="item_info_table.id_txt" value="Id:"/>
+	<resource key="item_info_table.claimed_by_id_txt" value="Claimed By:"/>
+	<resource key="ui_methods_ex.itemtype_label_item_keyed_name" value="{0} - {1}"/>
+	<resource key="ui_methods_ex.itemtype_label_item_keyed_name_readonly" value="{0} - {1} (read only)"/>
+	<resource key="ui_methods_ex.hide_relationships_print_view" value="Hide or show relationships (Alt+R)"/>
+	<resource key="ui_methods_ex.failed_to_get_item" value="Failed to get the {0}"/>
+	<resource key="ui_methods_ex.form_not_specified_for_you" value="A &quot;{0}&quot; form is not specified for you."/>
+	<resource key="ui_methods_ex.itemtype_label_item_is_here" value="There is {0} &quot;{1}&quot; here."/>
+	<resource key="ui_methods_ex.scan_in_file" value="Scan in File"/>
+	<resource key="ui_methods_ex.add_file" value="Add File"/>
+	<resource key="ui_methods_ex.check_out_file" value="Check Out File"/>
+	<resource key="ui_methods_ex.check_in_file" value="Check In File"/>
+	<resource key="ui_methods_ex.event_handler_failed" value="Internal Error: event handler failed."/>
+	<resource key="ui_methods_ex.event_handler_failure_msg" value="Event handler failed with message: {0}"/>
+	<resource key="ui_methods_ex.discover_only_item_cannot_be_opened" value="This item has Discover Only privilege. It cannot be opened."/>
+	<resource key="ui_methods_ex.classification_change_for_not_start_state_item" value="You are attempting to change the class of the item that is not in its start state. Would you like to continue?"/>
+	<resource key="ui_methods_ex.classification_change_lsmap_changed" value="You are attempting to change the class and it will cause Life Cycle change. Would you like to continue?"/>
+	<resource key="ui_methods_ex.classification_change_lsmap_and_permission_changed" value="You are attempting to change the class and it will cause Life Cycle and Permission change. Would you like to continue?"/>
+	<!--       Client/javascript/ui_methodsEx.js    -->
+	<!-- +++++ Client/Scripts/ImageBrowser/ +++++ -->
+	<resource key="image_browser.select_an_image" value="Select an image."/>
+	<resource key="image_browser.title" value="Image Browser"/>
+	<resource key="image_browser.internal_files" value="Internal Files"/>
+	<resource key="image_browser.external_file" value="External File"/>
+	<resource key="image_browser.select_file" value="Select File..."/>
+	<!--       Client/Scripts/ImageBrowser/       -->
+	<!-- +++++ Client/Scripts/AdvancedSearch.html +++++ -->
+	<resource key="advanced_search.ppm.delete_criteria" value="Delete Criteria"/>
+	<resource key="advanced_search.item_type" value="ItemType"/>
+	<resource key="advanced_search.property" value="Property"/>
+	<resource key="advanced_search.operation" value="Operation"/>
+	<resource key="advanced_search.criteria" value="Criteria[...]"/>
+	<resource key="advanced_search.criteria_row_must_be_selected" value="The Criteria Row must be selected."/>
+	<resource key="advanced_search.lookup_is_not_available" value="Lookup for {0} is not available."/>
+	<!--       Client/Scripts/AdvancedSearch.html     -->
+	<!-- +++++ Client/Scripts/changeMD5Dialog.html +++++ -->
+	<resource key="changemd5dialog.new_pwd_is_not_set_msg" value="New password is not set: {0}"/>
+	<!--       Client/Scripts/changeMD5Dialog.html     -->
+	<!-- +++++ Client/Scripts/ClassStructureDialog.html +++++ -->
+	<resource key="classstructure.malformed_xml" value="Malformed XML: {0}"/>
+	<resource key="classstructure.itemname_cannot_be_empty" value="ItemType name cannot be empty"/>
+	<resource key="classstructure.removenode_warning" value="You are attempting to change the class structure of the ItemType.  If the class structure changes will render existing data inconsistent you will need to manually update these classification references."/>
+	<resource key="classstructure.changenode_name_to_existing_name" value="Node with name {0} already exist"/>
+	<resource key="classstructure.you_may_select_leaf_nodes_only" value="You may select leaf nodes only."/>
+	<resource key="classstructure.node_name_is_invalid_it_contains_illegal_character" value="Node name is invalid. It contains illegal character &quot;{0}&quot;."/>
+	<resource key="classstructure.rename_confirmation" value="The modification might cause changes in items that reference the class structure. All changes to referencing items will be applied when the class structure is saved. Are you sure you would like to keep the change?"/>
+	<resource key="classstructure.meta_references_delete_alert" value="The class can’t be deleted because there are meta-data references on this class. Please resolve these conflicts before attempting to delete the class."/>
+	<resource key="classstructure.data_references_delete_warning" value="There are references from Item Type instances on this class. Deleting this class may cause data lost."/>
+	<resource key="classstructure.view_references_add_alert" value="The class is referenced from one or more Views. Views may only be assigned to leaf classes. Please resolve these conflicts before attempting to add any subclasses to this class."/>
+	<resource key="classstructure.data_references_add_alert" value="There are references from Item Type instances on this class. Instance may only be assigned to leaf classes."/>
+	<resource key="classstructure.clipboard_isnotempty" value="Clipboard isn’t empty. Continue will bring lose buffered data."/>
+	<!--       Client/Scripts/ClassStructureDialog.html       -->
+	<!-- +++++ Client/Scripts/ClassStructureDialogFrame.html +++++ -->
+	<resource key="classstructureframe.add_subclass_to" value="Add SubClass to {0}"/>
+	<resource key="classstructureframe.remove_subclass" value="Remove SubClass {0}"/>
+	<resource key="classstructureframe.cut_subclass" value="Cut"/>
+	<resource key="classstructureframe.paste_subclass" value="Paste"/>
+	<resource key="classstructureframe.sort" value="Sort"/>
+	<resource key="classstructureframe.sort_ascending" value="Ascending"/>
+	<resource key="classstructureframe.sort_discending" value="Descending"/>
+	<!--       Client/Scripts/ClassStructureDialogFrame.html       -->
+	<!-- +++++ Client/Scripts/ClipboardManager.html +++++ -->
+	<resource key="clipboardmanager.clipboard_manager" value="Clipboard Manager"/>
+	<resource key="clipboardmanager.source_type" value="Source Type"/>
+	<resource key="clipboardmanager.source_item" value="Source Item"/>
+	<resource key="clipboardmanager.relationship_type" value="Relationship Type"/>
+	<resource key="clipboardmanager.related_type" value="Related Type"/>
+	<resource key="clipboardmanager.related_item" value="Related Item"/>
+	<resource key="clipboardmanager.remove" value="Remove"/>
+	<resource key="clipboardmanager.paste" value="Paste"/>
+	<resource key="clipboardmanager.paste_target" value="Paste Target"/>
+	<resource key="clipboardmanager.paste_options" value="Paste Options"/>
+	<resource key="clipboardmanager.copy_permissions" value="Copy Permissions"/>
+	<resource key="clipboardmanager.create_related" value="Create Related"/>
+	<resource key="clipboardmanager.paste_html_value" value="Paste "/>
+	<resource key="clipboardmanager.select_all_html_value" value="Select All"/>
+	<resource key="clipboardmanager.remove_html_value" value="Remove"/>
+	<resource key="clipboardmanager.use_ctrl_c" value="Please use Ctrl+C"/>
+	<!--       Client/Scripts/ClipboardManager.html       -->
+	<!-- +++++ Client/Scripts/ConfigurableGrid.html +++++ -->
+	<resource key="configurablegrid.changes_will_be_discarded_html" value="Your changes in {0} will be discarded.\r\n\r\nDo You want to save the changes ?"/>
+	<!--       Client/Scripts/ConfigurableGrid.html       -->
+	<!-- +++++ Client/Scripts/configureEMail.html +++++ -->
+	<resource key="configureemail.configure_email" value="Configure E-Mail"/>
+	<!--       Client/Scripts/configureEMail.html       -->
+	<!-- +++++ Client/Scripts/Dashboard.html +++++ -->
+	<resource key="dashboard.error_creating_an_innovator_object" value="Error creating an innovator object"/>
+	<resource key="dashboard.failed_to_load" value="Dashboard failed to load: {0}"/>
+	<resource key="dashboard.failed_to_load_error_generating_graphics" value="Dashboard failed to load: Error generating graphics"/>
+	<!--       Client/Scripts/Dashboard.html       -->
+	<!-- +++++ Client/Scripts/colorDialog.html +++++ -->
+	<resource key="colordialog.title" value="Color dialog"/>
+	<!--       Client/Scripts/colorDialog.html       -->
+	<!-- +++++ Client/Scripts/dirtyItemsList.html +++++ -->
+	<resource key="dirtyitemslist.unsaved_items" value="Unsaved Items"/>
+	<resource key="dirtyitemslist.select_an_item_first" value="Select an Item first."/>
+	<resource key="dirtyitemslist.failed_to_save_the" value="Failed to save the {0}"/>
+	<resource key="dirtyitemslist.type" value="Type"/>
+	<resource key="dirtyitemslist.keyed_name" value="Keyed Name"/>
+	<!--       Client/Scripts/dirtyItemsList.html       -->
+	<!-- +++++ Client/Scripts/FindAndReplaceDialog.html +++++ -->
+	<resource key="findandreplacedialog.replace" value="Replace"/>
+	<resource key="findandreplacedialog.find_what" value="Find what:"/>
+	<resource key="findandreplacedialog.find_next" value="Find Next"/>
+	<resource key="findandreplacedialog.replace_with" value="Replace with:"/>
+	<resource key="findandreplacedialog.replace_all" value="Replace All"/>
+	<resource key="findandreplacedialog.match_case" value="Match case"/>
+	<resource key="findandreplacedialog.cancel" value="Cancel"/>
+	<!--       Client/Scripts/FindAndReplaceDialog.html       -->
+	<!-- +++++ Client/Scripts/foreignPropSelectTree.html +++++ -->
+	<resource key="foreignpropselecttree.foreign_prop_selec_tree" value="Foreign Property Selection Tree"/>
+	<resource key="foreignpropselecttree.foreign_props" value="Foreign Properties"/>
+	<resource key="foreignpropselecttree.error" value="Error {0}"/>
+	<!--       Client/Scripts/foreignPropSelectTree.html       -->
+	<!-- +++++ Client/Scripts/historyGrid.html +++++ -->
+	<resource key="historygrid.item_history" value="Item History"/>
+	<!--       Client/Scripts/historyGrid.html       -->
+	<!-- +++++ Client/Scripts/HTMLEditorDialog.html +++++ -->
+	<resource key="htmleditor.inn_formatted_text_editor" value="Formatted Text Editor"/>
+	<!--       Client/Scripts/HTMLEditorDialog.html       -->
+	<!-- +++++ Client/Scripts/LicManager.html +++++ -->
+	<resource key="licmanager.usernds_not_exist" value="userNds do not exist or are empty."/>
+	<resource key="licmanager.sessions_terminated" value="Sessions for the folowing users will be terminated:
+
+  "/>
+	<resource key="licmanager.no_sessions_terminated" value="No sessions to terminate specified."/>
+	<resource key="licmanager.sure" value="Are you sure ?"/>
+	<!--       Client/Scripts/LicManager.html       -->
+	<!-- +++++ Client/Scripts/itemsGrid.html +++++ -->
+	<resource key="itemsgrid.claimed_by_dropdown_button" value="Open claimed by menu"/>
+	<resource key="itemsgrid.locked_criteria_ppm.clear_criteria" value=" Clear Criteria"/>
+	<resource key="itemsgrid.locked_criteria_ppm.locked_by_me" value=" Locked By Me"/>
+	<resource key="itemsgrid.locked_criteria_ppm.locked_by_others" value=" Locked By Others"/>
+	<resource key="itemsgrid.locked_criteria_ppm.locked_by_anyone" value=" Locked By Anyone"/>
+	<resource key="itemsgrid.item_type_with_id_not_found" value="ItemType with id &quot;{0}&quot; not found !"/>
+	<resource key="itemsgrid.cntxt_menu.properties" value="Properties"/>
+	<resource key="itemsgrid.cntxt_menu.hide_column" value="Hide Column"/>
+	<resource key="itemsgrid.cntxt_menu.insert_column" value="Insert Column..."/>
+	<resource key="itemsgrid.select_item_type_first" value="Select the {0} first."/>
+	<resource key="itemsgrid.failed2get_itemtype" value="Failed to get the {0} ItemType."/>
+	<resource key="itemsgrid.error_open_form_preview" value="Form is not able to render in preview mode. Please contact your administrator, a special 'Preview' form may be required."/>
+	<resource key="itemsgrid.no_preview_available" value="No preview available."/>
+	<resource key="itemsgrid.polyitem_cannot_be_edited_from_the_location" value="A Poly Item cannot be edited from this location. Please open the Item to edit"/>
+	<resource key="itemsgrid.pasting_failed" value="Pasting failed."/>
+	<resource key="itemsgrid.pasting_success" value="Pasting completed successfully."/>
+	<resource key="itemsgrid.today" value="Today"/>
+	<resource key="itemsgrid.unable_complete_task_claimed_by_someone_else" value="Unable to complete task, it is currently claimed by someone else."/>
+	<resource key="itemsgrid.completion_dialog" value="Completion Dialog"/>
+	<!--     Client/Scripts/itemsGrid.html     -->
+	<!-- +++++ Client/Scripts/ItemTypeSelectionDialog.html +++++ -->
+	<resource key="itemtypeselectiondialog.select_item_type" value="Select ItemType"/>
+	<resource key="itemtypeselectiondialog.do_not_have_permission_to_create" value="You do not have permission to create any &quot;{0}&quot;"/>
+	<!--       Client/Scripts/ItemTypeSelectionDialog.html       -->
+	<!-- +++++ Client/Scripts/LicManager.html +++++ -->
+	<resource key="licmanager.title" value="License Manager"/>
+	<resource key="licmanager.n_column_caption" value="№"/>
+	<resource key="licmanager.x_column_caption" value="X"/>
+	<resource key="licmanager.login" value="Login"/>
+	<resource key="licmanager.database" value="Database"/>
+	<resource key="licmanager.login_time" value="Login Time"/>
+	<resource key="licmanager.last_activity" value="Last Activity"/>
+	<resource key="licmanager.licenses" value="Licenses"/>
+	<resource key="licmanager.comments" value="Comments"/>
+	<!--       Client/Scripts/LicManager.html       -->
+	<!-- +++++ Client/Scripts/LifeCycleDialog.html +++++ -->
+	<resource key="lifecycledialog.lc" value="{0} Life Cycle."/>
+	<resource key="lifecycledialog.no_lc" value="{0} has no Life Cycle."/>
+	<resource key="lifecycledialog.please_enter_comments" value="Please, enter comments:"/>
+	<!--       Client/Scripts/LifeCycleDialog.html       -->
+	<!-- +++++ Client/Scripts/login.aspx +++++ -->
+	<resource key="login.cookies_are_disabled_msg_html" value="Please allow cookies in your browser"/>
+	<!--       Client/Scripts/login.aspx       -->
+	<!-- +++++ Client/Scripts/MainMenu.aspx +++++ -->
+	<resource key="mainmenu.reset_lcs_failed" value="Reset Life Cycle State failed."/>
+	<resource key="mainmenu.rebuild_keyed_name_prop" value="Input names of ItemType to rebuild Keyed Name property. Names in list should be splitted by commas. Empty string means rebuild for all."/>
+	<resource key="mainmenu.set_lc_failed" value="Set Default Life Cycle failed."/>
+	<resource key="mainmenu.reset_access_failed" value="Reset Item Access failed."/>
+	<resource key="mainmenu.rebuilding_kn_failed" value="Rebuilding of Keyed Names failed.
+  {0}"/>
+	<resource key="mainmenu.kn_rebuilt" value="Keyed Names are rebuilt."/>
+	<resource key="mainmenu.change_sign" value="Change e-Signature"/>
+	<resource key="mainmenu.old_sign" value="Old Signature"/>
+	<resource key="mainmenu.new_sign" value="New Signature"/>
+	<resource key="mainmenu.confirm_sign" value="Confirm New Signature"/>
+	<resource key="mainmenu.check_sign_confirmation" value="Check New Signature And Its Confirmation."/>
+	<!--       Client/Scripts/MainMenu.aspx       -->
+	<!-- +++++ Client/Modules/aras/dialogs/multiLingual.js +++++ -->
+	<resource key="mldialog.ml_entry" value="Multilingual Entry"/>
+	<!--       Client/Modules/aras/dialogs/multiLingual.js       -->
+	<!-- +++++ Client/Scripts/nash.aspx +++++ -->
+	<resource key="nash.unexpected_error" value="Unexpected error in nash.aspx"/>
+	<!--       Client/Scripts/nash.aspx       -->
+	<!-- +++++ Client/Scripts/parametersGrid.html +++++ -->
+	<resource key="parametersgrid.sort_order" value="Sort order"/>
+	<resource key="parametersgrid.wrong_value_it" value="Wrong value entered for item type {0}"/>
+	<!--       Client/Scripts/parametersGrid.html       -->
+	<!-- +++++ Client/Scripts/promoteDialog.html +++++ -->
+	<resource key="promotedlg.propmote" value="Promote {0}"/>
+	<resource key="promotedlg.no_promotions_available" value="No promotions available."/>
+	<resource key="promotedlg.comment" value="Please, enter comments:"/>
+	<resource key="promotedlg.select_state" value="Select a state first."/>
+	<resource key="promotedlg.to_state" value="To State"/>
+	<!--       Client/Scripts/promoteDialog.html       -->
+	<!-- +++++ Client/Scripts/propsDialog.html +++++ -->
+	<resource key="propsdialog.item_type_label__item_keyed_name__properties" value="{0} &quot;{1}&quot; properties"/>
+	<!--       Client/Scripts/propsDialog.html       -->
+	<!-- +++++ Client/Scripts/relationships.html +++++ -->
+	<resource key="relationships.lost_reference" value="Internal error lost reference to the Field."/>
+	<resource key="relationships.parameters_not_valid" value="The parameters are not valid: {0}"/>
+	<!--       Client/Scripts/relationships.html       -->
+	<!-- +++++ Client/Scripts/revisionsDialog.html +++++ -->
+	<resource key="revisiondlg.item_versions" value="Item versions"/>
+	<resource key="revisiondlg.failed_get_it" value="Failed to get the {0} ItemType."/>
+	<resource key="revisiondlg.failed_get_item_id" value="Failed to get the {0} item with ID {1}."/>
+	<!--       Client/Scripts/revisionsDialog.html       -->
+	<!-- +++++ Client/Scripts/searchDialog.html +++++ -->
+	<resource key="searchdlg.select_item" value="You must select the item first."/>
+	<!--       Client/Scripts/searchDialog.html       -->
+	<!-- +++++ Client/Scripts/setup.aspx +++++ -->
+	<resource key="setup.cache_is_disabled" value="Please enable browser cache to improve performance"/>
+	<!--       Client/Scripts/setup.aspx       -->
+	<!-- +++++ Client/Scripts/relationshipsGrid.html +++++ -->
+	<resource key="relationshipsgrid.failed_get_item" value="Failed to get the {0} item."/>
+	<resource key="relationshipsgrid.no_additional_columns" value="No additional columns are available for this Item Type"/>
+	<resource key="relationshipsgrid.no_visible_props" value="This ItemType has no visible properties. You cannot create a new item."/>
+	<resource key="relationshipsgrid.select_row" value="Select a row first."/>
+	<resource key="relationshipsgrid.try_view" value="There is no {0}.
+Try to view {1}."/>
+	<resource key="relationshipsgrid.copy_without_saving" value="You can not perform a 'Copy' without saving.
+Save parent item first."/>
+	<resource key="relationshipsgrid.failed_get_item_id" value="Failed to get the item with ID {0}."/>
+	<resource key="relationshipsgrid.pasting_failed" value="Pasting failed."/>
+	<resource key="relationshipsgrid.pasting_completed_success" value="Pasting completed successfully."/>
+	<resource key="relationshipsgrid.clear_file_field" value="Do you want to clear the file field?"/>
+	<resource key="relationshipsgrid.already_open" value="This item is already open from a different configuration. You should be careful not to lose your data."/>
+	<resource key="relationshipsgrid.related_item_cannot_null" value="The related item can not be null."/>
+	<resource key="relationshipsgrid.related_it_not_spec" value="Related ItemType for RelationshipType &quot;{0}&quot; is not specified."/>
+	<resource key="relationshipsgrid.cant_change_relship" value="Can not change relationship: no related item."/>
+	<resource key="relationshipsgrid.select_relship" value="Select a relationship first."/>
+	<resource key="relationshipsgrid.no_relship_item_found" value="No relationship items found."/>
+	<resource key="relationshipsgrid.delete_from_clipboard_not_future_pasting" value="The relationship which you want delete is in the clipboard.
+Deleting the relationship will not allow future pasting.
+Do you really want to delete it?"/>
+	<resource key="relationshipsgrid.related_item_not_found" value="Related item not found."/>
+	<resource key="relationshipsgrid.ok" value="It's Ok."/>
+	<resource key="relationshipsgrid.failed_get_related_item_id" value="Failed to get the {0} related item with ID {1}."/>
+	<resource key="relationshipsgrid.value_not_exist_for_it" value="Value entered does not exist for item type {0}. Edit again?"/>
+	<resource key="relationshipsgrid.no_form_view" value="There is no Form defined for this View"/>
+	<resource key="relationshipsgrid.locked_another_user_change_view_classification" value="Form is locked by another user.\r\n\r\nDo you wish to continue and change this View classification?"/>
+	<resource key="relationshipsgrid.form_defined_view_not_found" value="The Form defined for this View is not found."/>
+	<resource key="relationshipsgrid.modifying_class_value_remove_fields" value="Modifying the class value for this form will remove the following fields from its current definition:\r\n\r\n"/>
+	<resource key="relationshipsgrid.continue_remove" value="\r\nDo you wish to continue and remove these fields?"/>
+	<resource key="relationshipsgrid.form_cannot_be_locked" value="The Form cannot be locked"/>
+	<resource key="relationshipsgrid.class_path_prop" value="Class Path for Property {0} of ItemType {1}."/>
+	<resource key="relationshipsgrid.internal_error_event_failed_initialize" value="Internal Error: event handler failed to initialize."/>
+	<resource key="relationshipsgrid.custom_event_failed" value="Custom event handler &quot;{0}&quot; failed to initialize:
+{1}"/>
+	<resource key="relationshipsgrid.internal_err_event_failed" value="Internal Error: event handler failed."/>
+	<resource key="relationshipsgrid.failed_with_msg" value="{0} handler failed with message:
+{1}"/>
+	<resource key="relationshipsgrid.initialize_relshipgrid" value="Could not initialize RelationshipsGrid. Please, try again."/>
+	<resource key="relationshipsgrid.pickreplace" value="Pick/Replace &quot;{0}&quot;"/>
+	<resource key="relationshipsgrid.remove" value="Remove &quot;{0}&quot;"/>
+	<resource key="relationshipsgrid.view" value="View &quot;{0}&quot;"/>
+	<resource key="relationshipsgrid.view_file" value="View file"/>
+	<resource key="relationshipsgrid.delete_confirmation" value="Are you sure you want to delete this item(s)?"/>
+	<resource key="relationshipsgrid.no_released_generation" value="No previous Released generation for redline comparison available"/>
+	<!--       Client/Scripts/relationshipsGrid.html       -->
+	<!-- +++++ Client/Scripts/StructureBrowser.html +++++ -->
+	<resource key="structurebrowser.browser" value="Structure - {0}"/>
+	<resource key="structurebrowser.show_item" value="Show Item ..."/>
+	<resource key="structurebrowser.expand_from_here" value="Expand from here"/>
+	<resource key="structurebrowser.side_by_side_with_other" value="Side-by-Side with other {0}"/>
+	<!--       Client/Scripts/StructureBrowser.html       -->
+	<!-- +++++ Dependencies section +++++ -->
+	<resource key="dependencies.is_new_error" value="The {0} is not saved yet."/>
+	<!-- +++++ Dependencies section +++++ -->
+	<!-- +++++ Client/Scripts/StructureBrowser.html +++++ -->
+	<resource key="tearoffmenu.err_copyitem" value="Error in CopyItem"/>
+	<resource key="tearoffmenu.default_permission_sfx" value=" [Default]"/>
+	<resource key="tearoffmenu.private_permissions_lose" value="There are currently permissions specified for one or more Restricted Identities which will be removed if a Private Permission is created."/>
+	<!--       Client/Scripts/StructureBrowser.html       -->
+	<!-- +++++ Client/Scripts/textDialog.html +++++ -->
+	<resource key="textdialog.title" value="Text Dialog"/>
+	<resource key="textdialog.text_pad" value="Text Pad"/>
+	<resource key="textdialog.save_html_value" value="Save"/>
+	<resource key="textdialog.reset_html_value" value="Reset"/>
+	<resource key="textdialog.close_html_value" value="Close"/>
+	<!--      Client/Scripts/textDialog.html       -->
+	<!-- +++++ Client/Scripts/whereUsed.html +++++ -->
+	<resource key="whereused.wu" value="Where Used - {0}"/>
+	<resource key="whereused.open_item" value="Open Item..."/>
+	<!--      Client/Scripts/whereUsed.html       -->
+	<!--       Client/Scripts/FormTool/fieldTool.html       -->
+	<resource key="fieldtool.select_field_delete" value="Select a field to delete."/>
+	<resource key="fieldtool.failed_create_new_field" value="Failed to create the new Field."/>
+	<resource key="fieldtool.form_fields" value="{0} Fields"/>
+	<!--       Client/Scripts/FormTool/fieldTool.html      -->
+	<!-- +++++ Client/Scripts/FormTool/formTabs.html +++++ -->
+	<resource key="formtabs.field_type" value="Field Type"/>
+	<resource key="formtabs.field_label" value="Field Label"/>
+	<resource key="formtabs.field_physical" value="Field Physical"/>
+	<resource key="formtabs.field_border" value="Field Border"/>
+	<resource key="formtabs.field_css" value="Field CSS"/>
+	<resource key="formtabs.field_event" value="Field Event"/>
+	<resource key="formtabs.form_props" value="Form Properties"/>
+	<resource key="formtabs.form_body" value="Form Body"/>
+	<resource key="formtabs.form_event" value="Form Event"/>
+	<!--       Client/Scripts/FormTool/formTabs.html       -->
+	<!-- +++++ Client/Scripts/FormTool/formtool.html +++++ -->
+	<resource key="formtool.internal_err_formtool_failed_init" value="Internal Error: Form Tool failed to initialize (Form or Form Body is empty)."/>
+	<resource key="formtool.check_form" value="Form Tool failed to initialize (Form or Form Body is empty). Check the Form."/>
+	<!--       Client/Scripts/FormTool/formtool.html      -->
+	<!-- +++++ Client/Scripts/InBasket/InBasket-VoteDialog.html +++++ -->
+	<resource key="inbasketvd.act_variable_not_found_varid" value="The &quot;Activity Variable Value&quot; item was not found for varID {0}"/>
+	<resource key="inbasketvd.act_no_allowed_votes" value="Error: This Activity has no allowed Votes."/>
+	<resource key="inbasketvd.wrong_iden" value="Wrong value entered for item type 'Identity'"/>
+	<resource key="inbasketvd.votelist_no_selected_items" value="VoteList contains no selected items."/>
+	<resource key="inbasketvd.enter_pwd" value="You must enter your Password to complete the Activity."/>
+	<resource key="inbasketvd.validatevote_resultxml_empty" value="ValidateVote: resultXML is empty!"/>
+	<resource key="inbasketvd.pwd_invalid" value="The password you entered is invalid."/>
+	<resource key="inbasketvd.votelist_no_items" value="VoteList contains no items."/>
+	<resource key="inbasketvd.enter_esign" value="You must enter your e-Signature to complete the Activity."/>
+	<resource key="inbasketvd.esign_invalid" value="The E-Signature you entered is invalid."/>
+	<resource key="inbasketvd.someone_delegate_to" value="You must enter the name of someone to delegate to."/>
+	<resource key="inbasketvd.task_required" value="Task {0} is required and must be completed."/>
+	<resource key="inbasketvd.variable_required" value="Variable {0} is required, but not filled in."/>
+	<resource key="inbasketvd.sequence" value="Sequence"/>
+	<resource key="inbasketvd.description" value="Description"/>
+	<resource key="inbasketvd.complete" value="Complete"/>
+	<resource key="inbasketvd.workflow_activity_completion" value="Workflow Activity Completion"/>
+	<resource key="inbasketvd.workflow" value="Workflow:"/>
+	<resource key="inbasketvd.activity" value="Activity:"/>
+	<resource key="inbasketvd.tasks" value="Tasks"/>
+	<resource key="inbasketvd.variables" value="Variables"/>
+	<resource key="inbasketvd.vote" value="Vote"/>
+	<resource key="inbasketvd.vote_with_colon" value="Vote:"/>
+	<resource key="inbasketvd.delegate_to" value="Delegate to:"/>
+	<resource key="inbasketvd.comments" value="Comments:"/>
+	<resource key="inbasketvd.authentication" value="Authentication"/>
+	<resource key="inbasketvd.password" value="Password:"/>
+	<resource key="inbasketvd.e_signature" value="E-Signature:"/>
+	<resource key="inbasketvd.complete_html_value" value="Complete"/>
+	<resource key="inbasketvd.save_changes_html_value" value="Save Changes"/>
+	<resource key="inbasketvd.cancel_html_value" value="Cancel"/>
+	<resource key="inbasketvd.unlock_dialog_title" value="Item {0} should be unlocked"/>
+	<resource key="inbasketvd.unlock_dialog_message" value="{0} &quot;{1}&quot; is locked. Your vote cannot be completed while the Item is locked. Would you like to unlock it now?"/>
+	<!--      Client/Scripts/InBasket/InBasket-VoteDialog.html       -->
+	<!-- +++++ Client/Scripts/InBasket/InBasket.html +++++ -->
+	<resource key="inbasket.locked_column_nm" value=""/>
+	<resource key="inbasket.type_column_nm" value="Type"/>
+	<resource key="inbasket.workflow_project_column_nm" value="Workflow/Project"/>
+	<resource key="inbasket.activity_name_column_nm" value="Activity"/>
+	<resource key="inbasket.status_column_nm" value="Status"/>
+	<resource key="inbasket.start_date_column_nm" value="Start Date"/>
+	<resource key="inbasket.end_date_column_nm" value="End Date"/>
+	<resource key="inbasket.instrucations_column_nm" value="Instructions"/>
+	<resource key="inbasket.assigned_to_column_nm" value="Assigned To"/>
+	<resource key="inbasket.filter_by_type_html" value="Filter by Type"/>
+	<resource key="inbasket.workflow_activities_html" value="Workflow Activities"/>
+	<resource key="inbasket.project_activities_html" value="Project Activities"/>
+	<resource key="inbasket.action_items_html" value="Action Items"/>
+	<resource key="inbasket.filter_by_status_html" value="Filter by Status"/>
+	<resource key="inbasket.active_html" value="Active"/>
+	<resource key="inbasket.pending_html" value="Pending"/>
+	<resource key="inbasket.cntxt_menu.view_mode" value="View Mode"/>
+	<resource key="inbasket.cntxt_menu.pending" value="Pending"/>
+	<resource key="inbasket.cntxt_menu.both" value="Both"/>
+	<resource key="inbasket.cntxt_menu.view_workflow" value="View Workflow"/>
+	<resource key="inbasket.cntxt_menu.update_act" value="Update Activity"/>
+	<resource key="inbasket.cntxt_menu.active" value="Active"/>
+	<resource key="inbasket.cntxt_menu.view_act" value="View Activity"/>
+	<resource key="inbasket.cntxt_menu.update_action" value="Update Action"/>
+	<resource key="inbasket.cntxt_menu.view_gantt_chart" value="View Gantt Chart"/>
+	<!--       Client/Scripts/InBasket/InBasket.html       -->
+	<!-- +++++ Client/Scripts/LifeCycle/lifecycleEditor.html +++++ -->
+	<resource key="lc.cntxt_menu.add_state" value="Add State"/>
+	<resource key="lc.cntxt_menu.remove_state" value="Remove State"/>
+	<resource key="lc.cntxt_menu.add_transition" value="Add Transition"/>
+	<resource key="lc.cntxt_menu.set_start_state" value="Set as Start state"/>
+	<resource key="lc.cntxt_menu.remove_transition" value="Remove Transition"/>
+	<resource key="lc.cntxt_menu.insert_state" value="Insert State"/>
+	<resource key="lc.remove_dependent_transitions" value="Remove dependent transitions first."/>
+	<resource key="lc.cant_remove_start" value="Cannot remove the start state."/>
+	<resource key="lc.cant_set_start_remove_transitions" value="Cannot set start state: remove transitions first."/>
+	<resource key="lc.new_state.new_state" value="New State"/>
+	<!--       Client/Scripts/LifeCycle/lifecycleEditor.html       -->
+	<!-- +++++ Client/Scripts/ReportTool/ +++++ -->
+	<resource key="reporttool.report_tool_is_not_applicable" value="Report Tool is not applicable here."/>
+	<resource key="reporttool.apply_html_value" value="Apply"/>
+	<resource key="reporttool.reset_html_value" value="Reset"/>
+	<resource key="reporttool.report" value="Report"/>
+	<resource key="reporttool.stylesheet" value="Stylesheet"/>
+	<resource key="reporttool.submit" value="Submit"/>
+	<resource key="reporttool.cancel" value="Cancel"/>
+	<!--       Client/Scripts/ReportTool/       -->
+	<!-- +++++ Client/Scripts/SitePreference/deletePreferences.html +++++ -->
+	<resource key="deleteprefdlg.title" value="Delete Preferences"/>
+	<resource key="deleteprefdlg.searching" value="   Searching..."/>
+	<!--       Client/Scripts/SitePreference/deletePreferences.html       -->
+	<!-- +++++ Client/Scripts/SitePreference/gridLayout.html +++++ -->
+	<resource key="gridlayout.err_cannot_find_item_id" value="Error 11: Cannot find item with id='{0}'"/>
+	<resource key="gridlayout.position" value="Position"/>
+	<resource key="gridlayout.label" value="Label"/>
+	<resource key="gridlayout.width" value="Width"/>
+	<resource key="gridlayout.itemtype" value="ItemType"/>
+	<resource key="gridlayout.property" value="Property"/>
+	<!--       Client/Scripts/SitePreference/gridLayout.html       -->
+	<!-- +++++ Client/Scripts/SitePreference/showColumnDialog.html +++++ -->
+	<resource key="showcolumndlg.title" value="Select Property"/>
+	<resource key="showcolumndlg.title1" value="&lt;b&gt;Select property to be shown in column:&lt;/b&gt;"/>
+	<resource key="showcolumndlg.incorrect_dlg_arg" value="Incorrect dialog argument. Expected: propsToShow."/>
+	<resource key="showcolumndlg.select_all" value="Select All"/>
+	<!--       Client/Scripts/SitePreference/showColumnDialog.html       -->
+	<!-- +++++ Client/Scripts/Workflow/workflowEditor.html +++++ -->
+	<resource key="workfloweditor.cntxt_menu.remove_act" value="Remove Activity"/>
+	<resource key="workfloweditor.cntxt_menu.add_act" value="Add Activity"/>
+	<resource key="workfloweditor.cntxt_menu.add_path" value="Add Path"/>
+	<resource key="workfloweditor.cntxt_menu.props" value="Properties"/>
+	<resource key="workfloweditor.cntxt_menu.remove_path" value="Remove Path"/>
+	<resource key="workfloweditor.cntxt_menu.insert_act" value="Insert Activity"/>
+	<resource key="workfloweditor.remove_dependent_paths" value="Remove dependent paths first."/>
+	<resource key="workfloweditor.cannot_remove_start_act" value="Cannot remove the start activity."/>
+	<resource key="workfloweditor.new_activity" value="New Activity"/>
+	<resource key="workfloweditor._none_" value="[none]"/>
+	<!--       Client/Scripts/Workflow/workflowEditor.html       -->
+	<!-- +++++ Client/Scripts/Workflow/workflowRelationships.html +++++ -->
+	<resource key="workflowrelships.params_arent_valid" value="The parameters are not valid: {0}"/>
+	<!--       Client/Scripts/Workflow/workflowRelationships.html       -->
+	<!-- +++++ Client/Scripts/WorkflowProcess/WfIProcessViewer.aspx +++++ -->
+	<resource key="wfiprocessviewer.failed_load_wp_instance" value="Failed to load the Workflow Process instance."/>
+	<!--       Client/Scripts/WorkflowProcess/WfIProcessViewer.aspx       -->
+	<!-- +++++ Client/Scripts/ReportTool/default.htm +++++ -->
+	<resource key="default.stylesheet_err" value="Stylesheet error: {0}"/>
+	<resource key="default.css_err" value="CSS styles error: {0}
+{1}"/>
+	<resource key="default.aras_functions_err" value="Aras Functions error: {0}
+{1}"/>
+	<!--       Client/Scripts/ReportTool/default.htm       -->
+	<!-- +++++ Client/Scripts/ReportTool/report.htm +++++ -->
+	<resource key="report.tree_err" value="Tree error: {0}"/>
+	<resource key="report.query_err" value="Query error: ({0}) {1}"/>
+	<resource key="report.template_err" value="Template error: {0}"/>
+	<resource key="report.standard_template" value="Would you like to start with the standard template?"/>
+	<!--       Client/Scripts/ReportTool/report.htm       -->
+	<!-- +++++ Client/Scripts/ReportTool/stylesheet.html +++++ -->
+	<resource key="stylesheet.apply_change_err" value="Apply change error: {0}"/>
+	<!--       Client/Scripts/ReportTool/stylesheet.html       -->
+	<!-- +++++ Imports/com/aras/innovator +++++ -->
+	<resource key="imports_core.input_int_as_duration_warning" value="Positive integer has to be inputted as duration"/>
+	<resource key="imports_core.inactivity_duration_days_lbl" value="Inactivity Duration (days)"/>
+	<resource key="imports_core.loading_file" value="Loading File..."/>
+	<resource key="imports_core.configure_email" value="Configure E-Mail"/>
+	<resource key="imports_core.data_source" value="Data Source"/>
+	<resource key="imports_core.activity_summary" value="Activity Summary"/>
+	<resource key="imports_core.name" value="Name"/>
+	<resource key="imports_core.managed_by" value="Managed By"/>
+	<resource key="imports_core.role" value="Role"/>
+	<resource key="imports_core.status" value="Status"/>
+	<resource key="imports_core.escalate_to" value="Escalate To"/>
+	<resource key="imports_core.duration" value="Duration"/>
+	<resource key="imports_core.message" value="Message"/>
+	<resource key="imports_core.assignments" value="Assignments"/>
+	<resource key="imports_core.required" value="Required"/>
+	<resource key="imports_core.for_all" value="For All"/>
+	<resource key="imports_core.voting_weight" value="Voting Weight"/>
+	<resource key="imports_core.identity_not_in_role" value="Identity {0} does not belongs to {1} (Role)."/>
+	<resource key="imports_core.new" value="New"/>
+	<resource key="imports_core.pick_replace_identity" value="Pick/Replace Identity"/>
+	<resource key="imports_core.delete" value="Delete"/>
+	<resource key="imports_core.cancel_workflow_html_value" value="Cancel Workflow"/>
+	<resource key="imports_core.cancelling" value="cancelling..."/>
+	<resource key="imports_core.canceling_cannot_be_undone_warning" value="Canceling workflow cannot be undone. Are you sure you want to cancel the current workflow process?"/>
+	<resource key="imports_core.open_item" value="Open Item"/>
+	<resource key="imports_core.variable_value_must_integer" value="Value of the property is invalid. It must be Integer. Edit again?"/>
+	<resource key="imports_core.class_structure_for" value="Class Structure for {0}"/>
+	<resource key="imports_core.file_extension_troubles" value="The extension of the file you are trying to open does not have a FileType associated with it"/>
+	<resource key="imports_core.file_extension_troubles_use_file_download" value="Please contact your administrator to have a FileType defined for the extension. You may still use the File/Download menu item on this form to download the file to your working directory"/>
+	<resource key="imports_core.property_name_error" value="Error in property name: specify name begining with letter or underscore
+ and followed by any combination of letters, digits and underscores !"/>
+	<resource key="imports_core.restricted_property_name" value="Restricted Reproperty name"/>
+	<resource key="imports_core.property_name_error_remove_whitespaces" value="Error in property name: remove all whitespace character"/>
+	<resource key="imports_core.new_pwd_cannot_be_set" value="New password cannot be set: {0} Edit again?"/>
+	<resource key="imports_core.no_method_with_specified_name" value="Cannot find method with name={0}"/>
+	<resource key="imports_core.poly_cannot_be_reversed_to_non_poly" value="Warning! Poly type cannot be reversed to Non Poly type after ItemType is created"/>
+	<resource key="imports_core.poly_cannot_be_reversed_to_non_poly_error" value="Error! Poly type cannot be reversed to Non Poly type after ItemType is created"/>
+	<resource key="imports_core.item_is_not_view" value="Affected Item is not a View !"/>
+	<resource key="imports_core.view_is_not_saved" value="View is not saved yet !"/>
+	<resource key="imports_core.view_update_success" value="View updated successfully"/>
+	<resource key="imports_core.view_update_failed" value="View update failed"/>
+	<resource key="imports_core.password_policy_requirements_missed" value="The password does not meet the password policy requirements.
+Check the password length (minimum is {0}) and password digits (at least {1})."/>
+	<resource key="imports_core.password_policy_requirements_missed2" value="The password does not meet the password policy requirements.
+Check password digits (at least {0})."/>
+	<resource key="imports_core.no_workflow_signoffs_exist" value="No Workflow Signoffs exist at this time."/>
+	<!--       Imports/com/aras/innovator       -->
+	<!-- Client/scripts/relationshipGrid.html -->
+	<resource key="com.aras.innovator.core.on_member_insert_warning" value="The Identity you are adding a Member to is an Alias Identity. Aliases are not intended to have members, and this should not be done in a production system. Are you sure you wish to add this Identity?"/>
+	<resource key="com.aras.innovator.core.on_alias_add_warning" value="The Identity's keyed name {0} you are adding as an Alias does not appear to match the User's keyed name {1}. Are you sure you wish to add this Identity?"/>
+	<!-- Client/scripts/SearchCenter/index.html -->
+	<!--User Notification-->
+	<resource key="user_notifications.failed_get_interval_variable" value="Invalid 'MessageCheckInterval' variable value"/>
+	<resource key="user_notifications.message_no_more_available" value="Message no more available"/>
+	<!--System Requirements-->
+	<resource key="system_requirements.failed_initialize_innovator" value="Failed to Initialize"/>
+	<resource key="system_requirements.certification_browser_notification" value="You are currently running browser &quot;{0}&quot;. The browser has failed the browser requirement check. Please contact your system administrator to confirm your client against the platform requirements."/>
+	<resource key="system_requirements.certification_browser_decision_label" value="Remember my decision."/>
+	<!-- +++++ Timezones +++++ -->
+	<resource key="tz.get_currentzone_fail" value="Could not get current time zone."/>
+	<resource key="tz.apply_update_fail" value="Could not apply time zones update."/>
+	<resource key="tz.apply_update_success" value="Time zones data updated was succesfully applied."/>
+	<resource key="tz.get_update_fail" value="Error occurred while getting update from Aras site. You can choose update file from your local disk."/>
+	<resource key="tz.parse_update_fail" value="Time zones update file has wrong format. You can choose another update file from your local disk."/>
+	<resource key="tz.parse_update_fail_details" value="Error: {0}"/>
+	<resource key="tz.file_is_empty" value="Error: File is empty"/>
+	<resource key="tz.select_time_zone" value="Select time zone"/>
+	<!--  FileExchange -->
+	<resource key="fe.assign_package_error" value="Team can't be assigned to package while it is locked"/>
+	<resource key="fe.wrong_input_error" value="Internal error: wrong input property's labels, property's columns width, property's columns aligns."/>
+	<resource key="fe.copy_files_from_instances_title" value="Copy file(s) from another item(s)"/>
+	<resource key="fe.select_configurations_title" value="Select configuration"/>
+	<resource key="fe.selected_files" value="Selected Files"/>
+	<resource key="fe.select_files_title" value="Select Files"/>
+	<resource key="fe.item_type" value="Item Type[...]"/>
+	<resource key="fe.select" value="Select"/>
+	<resource key="fe.configuration" value="Configuration"/>
+	<resource key="fe.selected_items" value="Selected Items"/>
+	<resource key="fe.changed_file_list" value="Change Files"/>
+	<resource key="fe.selected_all" value="Select All"/>
+	<resource key="fe.error_add_files_to_package" value="You can add files to the package in state 'InWork'"/>
+	<resource key="fe.retry_transaction" value="{0} restared"/>
+	<resource key="fe.configuration_empty" value="Configuration is empty"/>
+	<!-- Feature License-->
+	<resource key="licensing.copy_system_info" value="Copy System Information"/>
+	<resource key="licensing.view_feature_tree_title" value="View Feature Tree"/>
+	<resource key="licensing.activate_button" value="Activate"/>
+	<resource key="licensing.action_type_activate" value="Activate Feature"/>
+	<resource key="licensing.activation_key" value="Activation Key "/>
+	<resource key="licensing.activation_key_is_empty" value="Activation key can't be empty"/>
+	<resource key="licensing.feature_label" value="Feature"/>
+	<resource key="licensing.success_import_title" value="Activation Successful"/>
+	<resource key="licensing.success_update_title" value="Feature Updated"/>
+	<resource key="licensing.feature_successfully_updated" value="The feature has been successfully updated."/>
+	<resource key="licensing.activation_error_title" value="Activation Error"/>
+	<resource key="licensing.expiration_date" value="Expiration Date"/>
+	<resource key="licensing.service_not_available" value="Unable to communicate with the Aras licensing service.&#13;&#10;Please visit the {SUBSCRIBER_PORTAL} to view or request a license."/>
+	<resource key="licensing.subscriber_portal" value="subscriber portal"/>
+	<resource key="licensing.service_not_available_title" value="Service is not available"/>
+	<resource key="licensing.update_feature_tree_service_not_available" value="Unable to download the latest Feature Tree. Please try again. If this error persists, please contact {LICENSES_EMAIL}."/>
+	<resource key="licensing.update_feature_tree_service_not_available_title" value="Update Error"/>
+	<resource key="licensing.not_found" value="Error 404. Service not found"/>
+	<resource key="licensing.import_license" value="Import"/>
+	<resource key="licensing.import_feature_license" value="Import Feature License"/>
+	<resource key="licensing.feature_license_label" value="Feature License"/>
+	<resource key="licensing.feature_tree_successfully_updated" value="FeatureTree updated successfully"/>
+	<resource key="licensing.feature_tree_failed_updated_featureTree" value="Update FeatureTree failed"/>
+	<resource key="licensing.framework_license_key" value="Framework License Key"/>
+	<resource key="licensing.innovator_server_name" value="Server Name"/>
+	<resource key="licensing.innovator_server_locale" value="Server Locale"/>
+	<resource key="licensing.mac_address" value="Server MAC"/>
+	<resource key="licensing.database_server_name" value="Database Server Name"/>
+	<resource key="licensing.database_engine_edition" value="Database Edition"/>
+	<resource key="grid.rows_must_have_unique_ids" value="All grid rows must have unique ids."/>
+	<!-- Configurable InBasket -->
+	<resource key="configurable_inbasket.enabled_successfully" value="Configurable InBasket is hidden successfully."/>
+	<resource key="configurable_inbasket.enabled_already" value="Configurable InBasket has already been hidden."/>
+	<resource key="configurable_inbasket.enable_confirm" value="Hiding Configurable InBasket. Current InBasket implementation will be hidden. Are you sure?"/>
+	<!-- +++++ SSVC +++++ -->
+	<resource key="ssvc.my_bookmarks" value="Bookmarks"/>
+	<resource key="ssvc.my_bookmarks.context_menu.set_as_default" value="Set as Default"/>
+	<resource key="ssvc.my_bookmarks.context_menu.rename" value="Rename"/>
+	<resource key="ssvc.my_bookmarks.context_menu.remove" value="Remove"/>
+	<resource key="ssvc.my_bookmarks.context_menu.share" value="Share..."/>
+	<resource key="ssvc.my_bookmarks.context_menu.open" value="Open"/>
+	<resource key="ssvc.my_bookmarks.tooltip.owned_by" value="Owned by {0}"/>
+	<resource key="ssvc.forum.set_availability_to" value="Set availability to"/>
+	<resource key="ssvc.forum.share" value="Share..."/>
+	<resource key="ssvc.forum.share_with_identities" value="Identities"/>
+	<resource key="ssvc.forum.add_items" value="Add Item(s) to Bookmarks"/>
+	<resource key="ssvc.forum.items_added" value="Item(s) added to Bookmarks."/>
+	<resource key="ssvc.forum.add_to" value="Add to"/>
+	<resource key="ssvc.forum.add_search_to_forum" value="Add Search to Forum"/>
+	<resource key="ssvc.forum.dialog.create_new_forum" value="Create new Forum"/>
+	<resource key="ssvc.forum.dialog.share_forum" value="Share Forum"/>
+	<resource key="ssvc.forum.dialog.public" value="Public"/>
+	<resource key="ssvc.forum.dialog.private" value="Private"/>
+	<resource key="ssvc.forum.dialog.no_identities" value="You have not selected identities to share forum with. Private option will be selected by default."/>
+	<resource key="ssvc.forum.dialog.shared_with_identities" value="Shared with Identities:"/>
+	<resource key="ssvc.forum.new_forum_name" value="Name"/>
+	<resource key="ssvc.forum.searchBookmarks" value="Search bookmarks..."/>
+	<resource key="ssvc.secure_message.disabled" value="Message erased {0}."/>
+	<resource key="ssvc.secure_message.snapshot_access_restricted" value="Access to snapshot is restricted."/>
+	<resource key="ssvc.secure_message.no_get_permission" value="You do not have permission to open this version of the item."/>
+	<resource key="ssvc.secure_message.failed_get_user" value="Failed to get the user from message: "/>
+	<resource key="ssvc.aras_secure_social" value="Aras Secure Social"/>
+	<resource key="ssvc.licenseText" value="Aras Subscribers get visual collaboration including 3D/2D viewing, redlining, threaded discussions and more!"/>
+	<resource key="ssvc.licenseButtonText" value="See More"/>
+	<resource key="ssvc.ssvc_not_enabled_for_item" value="SSVC is not enabled for item."/>
+	<!--		SSVC		-->
+	<!-- +++++ File management +++++ -->
+	<resource key="file_management.select_and_upload_file" value="Select file..."/>
+	<resource key="file_management.select_and_upload_file_tooltip" value="Select new file"/>
+	<resource key="file_management.manage_file_property" value="Manage file property"/>
+	<resource key="file_management.clear_file_property" value="Delete file"/>
+	<resource key="file_management.file_succesfully_downloaded" value="The file &quot;{0}&quot; has been successfuly downloaded into {1}."/>
+	<resource key="file_management.dialog_initialization_failed" value="Failed to initialize dialog. Check setup arguments."/>
+	<resource key="file_management.file_with_id_not_found" value="Could not find 'File' item with id = {0}."/>
+	<resource key="file_management.file_not_specified" value="File is not specified."/>
+	<!-- File management -->
+	<!-- +++++ CMF +++++ -->
+	<resource key="cmf.same_element_type_structure" value="All mapped properties in the View should belong to the same Top Level Element Type. Invalid property: {0}."/>
+	<resource key="cmf.recalculate_need_open_and_lock_editor" value="Please open Editor and lock the item to perform the action."/>
+	<resource key="cmf.recalculate_need_lock_editor" value="Please lock the item to perform the action."/>
+	<!--       CMF       -->
+	<!-- +++++ CUI +++++ -->
+	<resource key="cui.failed_to_execute_command" value="The Command for the Command Alias '{0}' failed."/>
+	<resource key="cui.failed_to_execute_method" value="Failed to execute method {0}. The method doesn't exist or has been updated."/>
+	<resource key="cui.failed_to_find_command" value="Failed to execute a Command for Command Alias '{0}'. The command may not have been defined for the current ItemType or location."/>
+	<!--       CUI       -->
+	<!-- +++++ Client\javascript\Aras\Client\Controls\Public\ToolBarItem +++++ -->
+	<resource key="toolbar.set_label_method_unsupported" value="Object doesn't support property or method 'setLabel'"/>
+	<!--       Client\javascript\Aras\Client\Controls\Public\ToolBarItem       -->
+	<resource key="ui_methods_ex.create_only_one_report_at_a_time" value="You can create/modify only one report at a time. Please close '{0}' first before creating/modifying this report."/>
+	<resource key="component_dropdown_blur_msg" value="Value entered does not exist for {0}. Edit again?"/>
+	<!-- +++++ Client\Modules\cui\cuiGrid.js +++++ -->
+	<resource key="cui_grid.value_property_invalid" value="Value of the property is invalid. It must be {0}."/>
+	<!--       Client\Modules\cui\cuiGrid.js       -->
+	<!-- +++++ Client\Modules\components\editors.js +++++ -->
+	<resource key="editors.numbers_only" value="Numbers only"/>
+	<resource key="editors.list_values_only" value="List values only"/>
+	<resource key="editors.whole_numbers_only" value="Whole numbers only"/>
+	<resource key="editors.positive_numbers_only" value="Positive numbers only"/>
+	<resource key="editors.can_not_exceed" value="Can't exceed 2^64"/>
+	<resource key="editors.max_digits_before_decimal_point" value="{0} digits max before the decimal point"/>
+	<resource key="editors.value_is_too_large" value="Value is too large"/>
+	<!-- +++++ Client\Modules\components\editors.js +++++ -->
+	<!-- +++++ Components +++++ -->
+	<!-- +++++ Client\Modules\components\baseTypeahead.js +++++ -->
+	<resource key="components.value_invalid" value="The value entered is not valid."/>
+	<!--       Client\Modules\components\baseTypeahead.js       -->
+	<!--       Components       -->
+	<!-- +++++ Navigation panel +++++ -->
+	<!-- +++++ Client/Modules/aras/NavigationPanel.js +++++ -->
+	<resource key="navigation_panel.secondary_menu.back_to_contents" value="Back to Contents"/>
+	<resource key="navigation_panel.secondary_menu.create_new" value="Create New {0}"/>
+	<resource key="navigation_panel.secondary_menu.search" value="Search {0}"/>
+	<resource key="navigation_panel.secondary_menu.favorite_searches" value="Searches"/>
+	<resource key="navigation_panel.secondary_menu.unpin_favorite" value="Unpin from Quick Access"/>
+	<resource key="navigation_panel.secondary_menu.quick_search_placeholder" value="Quick Search"/>
+	<!--       Client/Modules/aras/NavigationPanel.js       -->
+	<!--       Navigation panel       -->
+	<!-- +++++ toolbar +++++ -->
+	<resource key="toolbar.show_overflow" value="Show all"/>
+	<resource key="toolbar.hide_overflow" value="Hide"/>
+	<resource key="toolbar.title_item_view.toltip" value="Copy &quot;{0}&quot; and link"/>
+	<resource key="toolbar.message.copied_to_clipboard" value="&quot;{0}&quot; and link copied to clipboard"/>
+	<!--       toolbar       -->
+	<!-- +++++ tooltip Add by tz 2023/5/30 窗体控件帮助说明功能 +++++ -->
+	<resource key="tooltip.show_more" value="Show More"/>
+	<!--       tooltip       -->
+	<!-- +++++ Pagination toolbar +++++ -->
+	<resource key="pagination.prev" value="Prev"/>
+	<resource key="pagination.next" value="Next"/>
+	<resource key="pagination.page" value="Page: {0}"/>
+	<resource key="pagination.page_X_of_Y" value="Page: {0} of {1}"/>
+	<resource key="pagination.results" value="{0} Results"/>
+	<resource key="pagination.prev.tooltip" value="Previous Page"/>
+	<resource key="pagination.next.tooltip" value="Next Page"/>
+	<resource key="pagination.pagesize.tooltip" value="Results per Page"/>
+	<resource key="pagination.maxresults.tooltip" value="Maximum Results"/>
+	<resource key="pagination.more.tooltip" value="Show Total Pages and Results"/>
+	<resource key="pagination.invalid_value" value="Invalid value"/>
+	<!--       Pagination toolbar       -->
+	<!-- +++++ Favorites +++++ -->
+	<resource key="favorites.confirm_delete" value="Are you sure you want to delete {0} from Favorites?"/>
+	<!--       Favorites       -->
+	<!-- +++++ Button favorite search +++++ -->
+	<resource key="favorite_button.save_search" value="Add to Favorites"/>
+	<resource key="favorite_button.delete_saved_search" value="Remove from Favorites"/>
+	<!--       Button favorite search       -->
+	<!-- +++++ Query Type Control +++++ -->
+	<resource key="searchview.commandbar.querytype.current" value="Current"/>
+	<resource key="searchview.commandbar.querytype.latest" value="Latest"/>
+	<resource key="searchview.commandbar.querytype.released" value="Released"/>
+	<resource key="searchview.commandbar.querytype.effective" value="Effective"/>
+	<!--       Query Type Control       -->
+	<!-- +++++ Dialog +++++ -->
+	<resource key="dialog.maximize" value="Maximize"/>
+	<resource key="dialog.normal" value="Normal"/>
+	<!--       Dialog       -->
+	<!-- +++++ Innovator frame titles +++++ -->
+	<resource key="frames.search_grid" value="{0} Search Grid"/>
+	<resource key="frames.item_form" value="{0} Item Form"/>
+	<resource key="frames.item_relationship" value="{0} Relationship"/>
+	<!--       Innovator frame titles       -->
+	<!-- +++++ ES Search +++++ -->
+	<resource key="es.searchbox_label" value="Enterprise Search"/>
+	<resource key="es.searchbox_search_button_label" value="Execute Enterprise Search"/>
+	<!--       ES Search       -->
+	<!-- +++++ CUI Controls ARIA-labels +++++ -->
+	<resource key="aria_label.ItemView.AccordionButton" value="Toggle Accordion"/>
+	<resource key="aria_label.ItemView.Toolbar" value="Item View Commandbar"/>
+	<!--       CUI Controls ARIA-labels       -->
+	<!-- +++++ Grid Reader Message +++++ -->
+	<resource key="grid_reader.empty" value="Blank"/>
+	<!--       Grid Reader Message       -->
+	<!-- +++++ Claim button of ItemView titlebar +++++ -->
+	<resource key="claim_button.claimed_by_another_user" value="Claimed by Another User"/>
+	<!--       Claim button of ItemView titlebar       -->
+	<!-- +++++ Refine Dialog +++++ -->
+	<resource key="refine_dialog.aria_label" value="Refine Dialog"/>
+	<!--       Refine Dialog       -->
+	<!-- +++++ Accordion +++++ -->
+	<resource key="accordion.maximize" value="Maximize"/>
+	<resource key="accordion.restore" value="Restore"/>
+	<!--       Accordion       -->
+	<!-- +++++ Date Picker +++++ -->
+	<resource key="date_picker.title" value="Select Date"/>
+	<resource key="date_picker.set_current_time.aria_label" value="Set Current Time"/>
+	<resource key="date_picker.ranges.aria_label" value="Range Operation"/>
+	<resource key="date_picker.ranges.equal_to" value="Equal To"/>
+	<resource key="date_picker.ranges.earlier_than" value="Earlier Than"/>
+	<resource key="date_picker.ranges.earlier_than_or_equal_to" value="Earlier Than or Equal To"/>
+	<resource key="date_picker.ranges.later_than" value="Later Than"/>
+	<resource key="date_picker.ranges.later_than_or_equal_to" value="Later Than or Equal To"/>
+	<resource key="date_picker.ranges.within_range" value="Within Range"/>
+	<!--       Date Picker       -->
+	<!-- +++++ Time Picker +++++ -->
+	<resource key="time_picker.invalid_message" value="Invalid Time Format"/>
+	<resource key="time_picker.aria_label" value="Time"/>
+	<!--       Time Picker       -->
+	<!-- +++++ Calendar +++++ -->
+	<resource key="calendar.aria_label.prev_month" value="Previous Month"/>
+	<resource key="calendar.aria_label.prev_year" value="Previous Year"/>
+	<resource key="calendar.aria_label.prev_decade" value="Previous Decade"/>
+	<resource key="calendar.aria_label.next_month" value="Next Month"/>
+	<resource key="calendar.aria_label.next_year" value="Next Year"/>
+	<resource key="calendar.aria_label.next_decade" value="Next Decade"/>
+	<!--       Calendar       -->
+	<!-- +++++ New layout dialog +++++ -->
+	<resource key="new_layout_dialog.title" value="New Layout"/>
+	<resource key="new_layout_dialog.label" value="Label"/>
+	<resource key="new_layout_dialog.button.save_layout" value="Save Layout"/>
+	<!--       New layout dialog       -->
+	<!-- +++++ Delete layout confirmation dialog +++++ -->
+	<resource key="delete_layout_dialog.title" value="Delete Layout"/>
+	<resource key="delete_layout_dialog.message" value='"{0}" will be deleted. Are you sure?'/>
+	<!--       Delete layout confirmation dialog       -->
+	<!-- +++++ Toc Editor +++++ -->
+	<resource key="toc_editor.access" value="Access"/>
+	<resource key="toc_editor.category" value="Category"/>
+	<resource key="toc_editor.icon" value="Icon"/>
+	<resource key="toc_editor.itemtype" value="ItemType"/>
+	<resource key="toc_editor.item" value="Item"/>
+	<resource key="toc_editor.form" value="Form"/>
+	<resource key="toc_editor.label" value="Label"/>
+	<resource key="toc_editor.new_category" value="New Category"/>
+	<resource key="toc_editor.new_page" value="New Page"/>
+	<resource key="toc_editor.page" value="Page"/>
+	<resource key="toc_editor.start_page" value="Start Page"/>
+	<resource key="toc_editor.parameters" value="Parameters"/>
+	<resource key="toc_editor.sort" value="Sort"/>
+	<resource key="toc_editor.toc" value="TOC"/>
+	<resource key="toc_editor.toc_saved" value="TOC Saved"/>
+	<resource key="toc_editor.view_as" value="View As"/>
+	<resource key="toc_editor.view_as_something" value="View As: {0}"/>
+	<resource key="toc_editor.clear_view_as" value="Clear"/>
+	<resource key="toc_editor.delete_toc_editor" value="'TOC Editor' cannot be deleted using the TOC Editor interface"/>
+	<resource key="toc_editor.itemtype_added" value="{0} added to TOC"/>
+	<!--       Toc Editor       -->
+	<!-- +++++ Dashboard +++++ -->
+	<resource key="dashboard.view_dashboard" value="View Dashboard"/>
+	<resource key="dashboard.dashboard_settings" value="Dashboard Settings"/>
+	<resource key="dashboard.add_new_item_error" value="Failed to add a template in the new state: save the item first."/>
+	<resource key="dashboard.widget_settings" value="Widget Settings"/>
+	<resource key="dashboard.delete_title" value="Delete Widget"/>
+	<resource key="dashboard.delete_message" value='Are you sure you want to delete "{0}" from "{1}"?'/>
+	<resource key="dashboard.height_size" value="Height"/>
+	<resource key="dashboard.width_size" value="Width"/>
+	<resource key="dashboard.icon" value="Icon"/>
+	<resource key="dashboard.label" value="Label"/>
+	<!--       Dashboard       -->
+	<!-- +++++ Confrm layout dialog +++++ -->
+	<resource key="confirm_layout_dialog.message" value='"{0}" already exists. Would you like to create new layout with the same label?'/>
+	<!--       Confrm layout dialog       -->
+	<resource key="no_form_and_relationships_error" value='Failed to open the item. Neither Form, nor Relationships exist'/>
+	<!-- +++++ AML-packages/core/Validate Federated Datatype +++++ -->
+	<resource key="ui_methods_ex.property_datatype_for_federated_not_supported" value="Federated '{0}' datatype is not supported."/>
+	<resource key="ui_methods_ex.changing_to_federated_delete_all_values" value='Changing property "{0}" to federated will delete all existing values!'/>
+	<!--       AML-packages/core/Validate Federated Datatype       -->
+</ui_resources>

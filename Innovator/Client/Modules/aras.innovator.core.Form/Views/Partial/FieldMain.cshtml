@@ -1,0 +1,399 @@
+﻿@using System
+@using System.Linq
+@using System.Text.RegularExpressions
+@using Models
+@using Models.AML.Enums
+@using Models.AML.ItemTypes
+@using Models.Helpers
+@model FieldToDraw
+
+@functions {
+	public async Task<string> RenderField(FieldType fieldType, FieldRenderModel renderModel)
+	{
+		if (renderModel.PropertyNode.Name == "current_state") {
+			fieldType = FieldType.Text;
+		}
+		switch (fieldType)
+		{
+			case FieldType.Html:
+
+				string htmlCode = renderModel.FieldNode.HtmlCode.IsNull ? string.Empty : renderModel.FieldNode.HtmlCode.Value;
+
+				var idsOfBodiesToReplace = new HashSet<string>();
+				idsOfBodiesToReplace.Add("2A0A9404985D437D92A5E2ADF27F7B89"); //Form/Body's id of Form PM_projectOnAdd.xml
+				idsOfBodiesToReplace.Add("222C35122F1B4898B6F8BB24772FD5C0"); //Form/Activity Completion Worksheet.xml
+				idsOfBodiesToReplace.Add("0F3E9019485F452BB71619794C9D8069"); //Form/Activity2 Assignment.xml
+				idsOfBodiesToReplace.Add("12A1734508324212B395C53FB328B03F"); //Form/Activity2 Comments.xml
+				idsOfBodiesToReplace.Add("FC8BD22CA517491A804F5452E61AFB43"); //Form/Activity2 Task.xml
+				idsOfBodiesToReplace.Add("249F71F981DE4E6DB347231CB9871339"); //Form/Activity2 [PanelForm].xml
+				idsOfBodiesToReplace.Add("05B64DAA17C04FD691421FA39CCE4B89"); //Form/Activity2.xml
+				idsOfBodiesToReplace.Add("4C6EECEDBCD64E45B21D262EF8DCDE05"); //Form/Business Calendar Exception.xml
+				idsOfBodiesToReplace.Add("733FC20D46F44FC6A64534EC583A83D1"); //Form/Business Calendar Year.xml
+				idsOfBodiesToReplace.Add("BA051B07975D41B5AD2C7C88D6FF9AAC"); //Form/Part Submission Warrant.xml
+				idsOfBodiesToReplace.Add("25BE532F03F04380BE1CE414886F5C1F"); //Form/Program.xml
+				idsOfBodiesToReplace.Add("E354E4F38711436CB90DA282B6E7BB4D"); //Form/Project Team.xml
+				idsOfBodiesToReplace.Add("65DB9A274E814B92AFCB2CEC08123B06"); //Form/Project.xml
+				idsOfBodiesToReplace.Add("695F7DBD13834173866F25AB7AB8F5FF"); //Form/WBS Element [PanelForm].xml
+				idsOfBodiesToReplace.Add("7541630692E240D8A0AC2949066F45D1"); //Form/WBS Element.xml
+
+				if (renderModel.FieldNode.SourceId != null && idsOfBodiesToReplace.Contains(renderModel.FieldNode.SourceId.Value))
+				{
+					htmlCode = Regex.Replace(htmlCode, @"\btop.aras\b", "aras");
+				}
+				@(Html.Raw(htmlCode))
+				break;
+			case FieldType.NestedForm:
+				@await Html.PartialAsync("Partial/FieldNestedForm", renderModel)
+				break;
+			case FieldType.MenuBar:
+				@:uiDrawMenubarEx
+				break;
+			case FieldType.ToolBar:
+				@:uiDrawFieldToolbarEx
+				break;
+			case FieldType.TabBar:
+				@:uiDrawFieldTabbarEx
+				break;
+			case FieldType.Tree:
+				@:uiDrawFieldTreeEx
+				break;
+			case FieldType.TreeGrid:
+				@:uiDrawFieldTreeGridEx
+				break;
+			case FieldType.Grid:
+				@:uiDrawFieldGridEx
+				break;
+			case FieldType.Label:
+				@await Html.PartialAsync("Partial/FieldLabel", renderModel)
+				break;
+			case FieldType.Hidden:
+				renderModel.FieldType = FieldType.Hidden;
+				@await Html.PartialAsync("Partial/FieldHtpEx", renderModel)
+				break;
+			case FieldType.Text:
+				renderModel.FieldType = FieldType.Text;
+				@await Html.PartialAsync("Partial/FieldHtpEx", renderModel)
+				break;
+			case FieldType.Password:
+				renderModel.FieldType = FieldType.Password;
+				@await Html.PartialAsync("Partial/FieldHtpEx", renderModel)
+				break;
+			case FieldType.TextArea:
+				@await Html.PartialAsync("Partial/FieldTextArea", renderModel)
+				break;
+			case FieldType.DropDown:
+			case FieldType.ListBoxMultiSelect:
+			case FieldType.ListBoxSingleSelect:
+			case FieldType.ColorList:
+				@await Html.PartialAsync("Partial/FieldListBox", renderModel)
+				break;
+			case FieldType.Button:
+				@await Html.PartialAsync("Partial/FieldButton", renderModel)
+				break;
+			case FieldType.CheckBox:
+				@await Html.PartialAsync("Partial/FieldCheckbox", renderModel)
+				break;
+			case FieldType.CheckBoxList:
+				renderModel.FieldType = FieldType.CheckBox;
+				@await Html.PartialAsync("Partial/FieldChbRadList", renderModel)
+				break;
+			case FieldType.RadioButtonList:
+				renderModel.FieldType = FieldType.Radio;
+				@await Html.PartialAsync("Partial/FieldChbRadList", renderModel)
+				break;
+			case FieldType.Date:
+				@await Html.PartialAsync("Partial/FieldDate", renderModel)
+				break;
+			case FieldType.Item:
+				renderModel.IsMLString = false;
+				// If item is file
+				var propNode = renderModel.PropertyNode;
+				if (propNode != null && propNode.DataSource != null
+					&& propNode.DataSource.Name == "File" && Model.Mode != "search")
+				{
+					@await Html.PartialAsync("Partial/FieldFileItem", renderModel)
+				}
+				break;
+			case FieldType.MLString:
+				renderModel.IsMLString = true;
+				@await Html.PartialAsync("Partial/FieldItem", renderModel);
+				break;
+			case FieldType.Image:
+				@await Html.PartialAsync("Partial/FieldImage", renderModel);
+				break;
+			case FieldType.Color:
+				@await Html.PartialAsync("Partial/FieldColor", renderModel);
+				break;
+			case FieldType.FileItem:
+				@await Html.PartialAsync("Partial/FieldFileItem", renderModel);
+				break;
+			case FieldType.FormattedText:
+				@await Html.PartialAsync("Partial/FieldFormattedText", renderModel);
+				break;
+			case FieldType.GroupBox:
+				@await Html.PartialAsync("Partial/FieldGroupBox", Model);
+				break;
+		}
+		return "";
+	}
+}
+
+@{
+	var fieldNode = Model.FieldNode;
+	var propNode = Model.PropertyNode;
+
+	var mode = Model.Mode;
+	var itemTypeNode = Model.ItemType;
+
+	if (fieldNode == null)
+	{
+		return;
+	}
+
+	if (propNode != null)
+	{
+		if (propNode.DataType == "foreign")
+		{
+			propNode = Model.CommonInfo.ForeignInfo.FirstOrDefault(item => item.Key == propNode.Id).Value;
+		}
+	}
+	if (!Model.CommonInfo.SkipComponents && propNode != null && propNode.Name != "current_state")
+	{
+		switch (fieldNode.FieldType)
+		{
+			case FieldType.Item:
+				if (!(propNode != null && propNode.DataSource != null
+					&& propNode.DataSource.Name == "File" && Model.Mode != "search"))
+				{
+					@await Html.PartialAsync("Partial/ComponentFieldMain", Model);
+				} else if (propNode.DataSource.Name == "File") {
+					break;
+				}
+				return;
+			case FieldType.DropDown:
+				if (propNode.DataType != "color list")
+				{
+					@await Html.PartialAsync("Partial/ComponentFieldMain", Model);
+					return;
+				}
+				break;
+			case FieldType.ClassStructure:
+				@await Html.PartialAsync("Partial/ComponentFieldMain", Model)
+				return;
+			case FieldType.XClasses:
+				@await Html.PartialAsync("Partial/ComponentFieldMain", Model);
+				return;
+		}
+	}
+
+	var allLanguages = Model.CommonInfo.AllLanguages;
+
+	var regExSpace = new Regex(@"\s", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase | RegexOptions.Compiled);
+
+	var fieldType = fieldNode.FieldType;
+	var fieldId = fieldNode.Id;
+	var fieldName = fieldNode.Name;
+
+	var propDataType = String.Empty;
+	var propName = String.Empty;
+	var isRequired = false;
+	var isDisabled = fieldNode.IsDisabled;
+	var propIsReadOnly = false;
+	if (propNode != null)
+	{
+		propDataType = propNode.DataType;
+		propName = propNode.Name;
+		isRequired = propNode.IsRequired;
+		propIsReadOnly = propNode.ReadOnly;
+	}
+
+	var languageCode = Model.CommonInfo.JSInfo.LanguageCode;
+	Language sessionLanguage = allLanguages.FirstOrDefault(tmp => string.Equals(tmp.Code, languageCode, StringComparison.OrdinalIgnoreCase));
+	Language fieldLabelLanguage = fieldNode.Label.IsNull ? null : allLanguages.FirstOrDefault(tmp => string.Equals(tmp.Code, fieldNode.Label.Lang, StringComparison.OrdinalIgnoreCase));
+	string sessionLanguageDirection = sessionLanguage?.Direction.Value;
+	string fieldLabelLanguageDirection = fieldLabelLanguage?.Direction.Value;
+
+	var sessLangDirection = "sys_session_lang_direction_" + (string.IsNullOrEmpty(sessionLanguageDirection) ? "ltr" : sessionLanguageDirection);
+	var fieldLabelLangDirection = "sys_label_lang_direction_" + (string.IsNullOrEmpty(fieldLabelLanguageDirection) ? "ltr" : fieldLabelLanguageDirection);
+
+	var sysContainer = String.IsNullOrEmpty(Model.GroupBoxOrientation) ? "sys_f_container" : "sys_f_container sys_f_container_in_" + Model.GroupBoxOrientation + "_groupbox";
+}<!--
+
+
+beginning of @(fieldName)
+--><div id="@(fieldId)span" name="@(fieldName)"
+	class="@(sysContainer) @(sessLangDirection) @(fieldLabelLangDirection) @(String.IsNullOrEmpty(propDataType) ? String.Empty : "sys_dt_" + regExSpace.Replace(propDataType, "_")) @(isRequired ? "sys_p_is_required" : String.Empty) @(propIsReadOnly ? "sys_p_is_readonly" : String.Empty) @(isDisabled ? "aras-form-field_disabled" : String.Empty) @("sys_ft_" + regExSpace.Replace(SerializeUtils.GetFieldTypeName(fieldType), "_").ToLowerInvariant()) @("sys_fn_" + regExSpace.Replace(fieldName, "_")) @(String.IsNullOrEmpty(propName) ? String.Empty : ("sys_pn_" + regExSpace.Replace(propName, "_")))"
+	style="@(fieldNode.Positioning.IsNull ? String.Empty : "position:" + fieldNode.Positioning.Value + ";") @(!fieldNode.Y.IsNull ? "top: " + fieldNode.Y + "px;" : String.Empty) @(!fieldNode.X.IsNull ? "left: " + fieldNode.X + "px;" : String.Empty) @(fieldNode.Width.IsNull ? String.Empty : "width: " + fieldNode.Width.Value + "px;") @(fieldNode.Height.IsNull ? String.Empty : "height: " + fieldNode.Height.Value + "px;") @(fieldNode.ZIndex.IsNull ? String.Empty : "z-index: " + fieldNode.ZIndex.Value+";") @(fieldNode.IsVisible ? String.Empty : "visibility:hidden;")">
+	<fieldset class="sys_f_border" style="border-style: solid; border-color: var(--neutral-c); border-radius: 2px; @(!fieldNode.BorderWidth.IsNull && !string.IsNullOrEmpty(fieldNode.BorderWidth.Value) ? "border-width: " + fieldNode.BorderWidth.Value + (System.Text.RegularExpressions.Regex.IsMatch(fieldNode.BorderWidth.Value, @"\d$") ? "px;" : String.Empty) : String.Empty)">
+		@{
+			if (!string.IsNullOrEmpty(fieldNode.Legend.Value))
+			{
+				@:<legend class="sys_f_legend">@fieldNode.Legend.Value</legend>
+			}
+
+			var labelPosition = !String.IsNullOrEmpty(fieldNode.LabelPosition) ? fieldNode.LabelPosition : "left";
+
+			var firstContainerClass1 = String.Empty;  // 1st class name for the first container (e.g. sys_f_label_container)
+			var firstContainerClass2 = String.Empty;  // 2nd class name for the first container (e.g. sys_f_label_top)
+			var firstContainerClass3 = String.Empty;  // 3rd class name for the first container (e.g. sys_f_empty_label_container)
+			var secondContainerClass1 = String.Empty; // the same for the second container
+			var secondContainerClass2 = String.Empty;
+			var secondContainerClass3 = String.Empty;
+
+			//Add by tz 2023/5/30 窗体控件帮助说明功能
+			var label = !Model.FieldNode.Label.IsNull ? Model.FieldNode.Label.Value : String.Empty;
+			var helpTooltip = propNode.HelpTooltip;
+			var helpText = propNode.HelpText;
+			var isShowTooltip=!String.IsNullOrEmpty(helpTooltip.ToString());
+
+			var additionalLabelCssClasses = fieldNode.Label.IsNull ? "sys_f_empty_label_container" : String.Empty;
+			var additionalValueCssClasses = String.Empty;
+
+
+			var textAlign = !fieldNode.TextAlign.IsNull ? "text-align:" + fieldNode.TextAlign.Value + ";" : String.Empty;
+
+			var firstContainerStyle1 = String.Empty;
+			var secondContainerStyle1 = String.Empty;
+
+			switch (labelPosition)
+			{
+				case "left":
+					firstContainerClass1 = "sys_f_label_container";
+					firstContainerClass2 = "sys_f_label_left";
+					firstContainerClass3 = additionalLabelCssClasses;
+					secondContainerClass1 = "sys_f_value_container";
+					secondContainerClass2 = "sys_f_value_right";
+					secondContainerClass3 = additionalValueCssClasses;
+					firstContainerStyle1 = textAlign;
+					break;
+				case "top":
+					firstContainerClass1 = "sys_f_label_container";
+					firstContainerClass2 = "sys_f_label_top";
+					firstContainerClass3 = additionalLabelCssClasses;
+					secondContainerClass1 = "sys_f_value_container";
+					secondContainerClass2 = "sys_f_value_bottom";
+					secondContainerClass3 = additionalValueCssClasses;
+					firstContainerStyle1 = textAlign;
+					break;
+				case "right":
+					firstContainerClass1 = "sys_f_value_container";
+					firstContainerClass2 = "sys_f_value_left";
+					firstContainerClass3 = additionalValueCssClasses;
+					secondContainerClass1 = "sys_f_label_container";
+					secondContainerClass2 = "sys_f_label_right";
+					secondContainerClass3 = additionalLabelCssClasses;
+					secondContainerStyle1 = textAlign;
+					break;
+				case "bottom":
+					firstContainerClass1 = "sys_f_value_container";
+					firstContainerClass2 = "sys_f_value_top";
+					firstContainerClass3 = additionalValueCssClasses;
+					secondContainerClass1 = "sys_f_label_container";
+					secondContainerClass2 = "sys_f_label_bottom";
+					secondContainerClass3 = additionalLabelCssClasses;
+					secondContainerStyle1 = textAlign;
+					break;
+			}
+
+			@:<table cellspacing="0" cellpadding="0" class="sys_f_table">
+			@:	<tbody class="sys_f_tbody">
+			@:	   <tr class="sys_f_tr">
+			@:			<td class="@(firstContainerClass1) @(firstContainerClass2) @(firstContainerClass3)" style="@(firstContainerStyle1)">
+								//Add by tz 2023/5/30 窗体控件帮助说明功能
+								var labelString = String.IsNullOrEmpty(label) ? "" : MethodsExUtils.PreserveTags(label);
+								var questionMark = isShowTooltip ? @String.Format("<div onmouseenter=\"showTooltipHandler(event)\" data-fieldlabel=\"{0}\" data-helptext=\"{1}\" data-helptooltip=\"{2}\"  class='aras-icon-question-mark_wrapper aras-icon-question-mark_main-field'><span class='aras-icon-question-mark aras-icon-question-mark_grey aras-icon-question-mark_form'></span></div>", labelString, helpText, helpTooltip) : String.Empty;
+
+								if (labelPosition == "left" || labelPosition == "top")
+								{
+									var fontFamily = !String.IsNullOrEmpty(Model.FieldNode.FontFamily) ? "font-family:" + Model.FieldNode.FontFamily + ";" : String.Empty;
+									var fontSize = !String.IsNullOrEmpty(Model.FieldNode.FontSize) ? "font-size:" + Model.FieldNode.FontSize + ";" : String.Empty;
+									var fontWeight = !String.IsNullOrEmpty(Model.FieldNode.FontWeight) ? "font-weight:" + Model.FieldNode.FontWeight + ";" : String.Empty;
+									var fontColor = !String.IsNullOrEmpty(Model.FieldNode.FontColor) ? "color:" + Model.FieldNode.FontColor + ";" : String.Empty;
+									//Modify by tz 2023/5/30 窗体控件帮助说明功能
+									//var label = !Model.FieldNode.Label.IsNull ? Model.FieldNode.Label.Value : String.Empty;
+
+									@:<div id="@(fieldId)_label" class="sys_f_label" style="@(fontFamily)@(fontSize)@(fontWeight)@(fontColor)">@Html.Raw(String.IsNullOrEmpty(label) ? "" : MethodsExUtils.PreserveTags(label))</div>
+									//Add by tz 2023/5/30 窗体控件帮助说明功能
+									@:@Html.Raw(questionMark)
+									//End Add
+									@:</td>
+									if (labelPosition == "top") // Append tr
+									{
+										@:</tr>
+										@:<tr class="sys_f_tr">
+									}
+									@:<td class="@(secondContainerClass1) @(secondContainerClass2) @(secondContainerClass3)" style="@(secondContainerStyle1)">
+								}
+
+								if (mode == "add" && fieldType != FieldType.ClassStructure)
+								{
+									mode = "edit";
+								}
+
+								// Base information for field rendering
+								var renderModel = new FieldRenderModel
+								{
+									FieldType = fieldType,
+									FieldNode = fieldNode,
+									PropertyNode = propNode,
+									ItemTypeNode = itemTypeNode,
+									AllLanguages = allLanguages,
+									ListNode = Model.CommonInfo.ListInfo,
+									FilterListNode = Model.CommonInfo.FilterListInfo,
+									ResourceNode = Model.CommonInfo.ResourceInfo,
+									ForeignPropertyNode = Model.CommonInfo.ForeignInfo,
+									Mode = mode,
+									BrowserType = BrowserHelper.ToBrowserType(Model.CommonInfo.JSInfo.BrowserCode)
+								};
+
+								//the helper is to avoid extra new line for field html
+
+								@:<div class="sys_f_value">
+								@:@await RenderField(fieldType, renderModel)
+								@:</div>
+
+								var onRestrictedMsgClickFuncNm = "system$" + fieldId + "$restrictedMsgClick";
+								var onClickHandlerBody = onRestrictedMsgClickFuncNm + "(true, event);";
+
+								@:<div class="sys_f_restricted_msg" id="sys_f_restricted_msg" name="sys_f_restricted_msg" onclick="@(onClickHandlerBody)" onhelp="@(onRestrictedMsgClickFuncNm)(false, event);">@(MethodsExUtils.GetResource(Model.CommonInfo.ResourceInfo, "common.restricted_property_warning"))</div>
+								<script type="text/javascript">
+									function @(onRestrictedMsgClickFuncNm)(doHide, event)
+									{
+										if (!document.isEditMode && doHide == true) return false;
+										var pn = "@(!String.IsNullOrEmpty(propName) ? propName : String.Empty)";
+										var s = event.srcElement || event.target;
+										if (!pn || !document.item.selectSingleNode(pn + "[@@is_null='0']"))
+										{
+											s.style.display = "";
+											s.parentElement.getElementsByTagName("DIV")[0].style.display="";
+											return;
+										}
+										s.style.display = (doHide ? "" : "block");
+										s.parentElement.getElementsByTagName("DIV")[0].style.display = (doHide ? "" : "none");
+									}
+								</script>
+								if (labelPosition == "right" || labelPosition == "bottom")
+								{
+									@:</td>
+									if (labelPosition == "bottom") // Append tr
+									{
+										@:</tr>
+										@:<tr class="sys_f_tr">
+									}
+									var fontFamily = !String.IsNullOrEmpty(Model.FieldNode.FontFamily) ? "font-family:" + Model.FieldNode.FontFamily + ";" : String.Empty;
+									var fontSize = !String.IsNullOrEmpty(Model.FieldNode.FontSize) ? "font-size:" + Model.FieldNode.FontSize + ";" : String.Empty;
+									var fontWeight = !String.IsNullOrEmpty(Model.FieldNode.FontWeight) ? "font-weight:" + Model.FieldNode.FontWeight + ";" : String.Empty;
+									var fontColor = !String.IsNullOrEmpty(Model.FieldNode.FontColor) ? "color:" + Model.FieldNode.FontColor + ";" : String.Empty;
+									//var label = !Model.FieldNode.Label.IsNull ? Model.FieldNode.Label.Value : String.Empty;
+
+									@:<td class="@(secondContainerClass1) @(secondContainerClass2) @(secondContainerClass3)" style="@(secondContainerStyle1)">
+									@:<div id="@(fieldId)_label" class="sys_f_label" style="@(fontFamily) @(fontSize) @(fontWeight) @(fontColor)">@Html.Raw(!String.IsNullOrEmpty(label) ? MethodsExUtils.PreserveTags(label) : string.Empty)</div>
+									//Add by tz 2023/5/30 窗体控件帮助说明功能
+									@:@Html.Raw(questionMark)
+								}
+						@:</td>
+					@:</tr>
+				@:</tbody>
+			@:</table>
+		}</fieldset>
+</div><!-- end of @(fieldName) -->

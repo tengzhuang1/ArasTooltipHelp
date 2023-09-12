@@ -1,0 +1,356 @@
+﻿@using System
+@using System.Collections.Generic
+@using Models.AML.Enums
+@using Models.AML.ItemTypes
+@using Models.Helpers
+@using System.Text.Json
+@using Aras.Client;
+@model Models.FormRenderModel
+@{
+	// JSInfo Params
+	var mode = Model.JSInfo.Mode;
+	var formId = Model.JSInfo.FormId;
+	var isTemp = Model.JSInfo.IsTemp;
+	var scriptsUrl = Model.JSInfo.ScriptsUrl;
+	var itemTypeInfo = Model.ItemTypeInfo;
+
+	// Global variables
+	var form = Model.FormInfo;
+	var body = (Body)form.Relationships.Items.FirstOrDefault(item => item.Type == ItemNodeType.Body);
+	var fields = body?.Relationships.Items.Where(item => item.Type == ItemNodeType.Field).ToList();
+	var skipComponents = false;
+	HashSet<string> formNamesToSkipComponents = new HashSet<string>
+	{
+		"PE_ChooseCMOptions",
+		"PE_AddToChange",
+		"tp_AddTable"
+	};
+	if (formNamesToSkipComponents.Contains(Model.FormInfo.KeyedName))
+	{
+		skipComponents = true;
+	}
+}
+<!DOCTYPE html>
+<!-- (c) Copyright by Aras Corporation, 2004-2013. -->
+<html class="html_@(mode)">
+	<head>
+	<title></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+	<script type="text/javascript" src="@Url.ContentWithSalt("~/javascript/include.aspx?classes=ArasModules,ItemProperty&files=TopWindowHelper")"></script>
+	<script type="text/javascript" src="@Url.ContentWithSalt("~/Modules/aras/field.js")"></script>
+	<script>
+		var aras = TopWindowHelper.getMostTopWindowWithAras(window).aras;
+
+		aras.setWindowLangAttribute(window);
+		aras.setWindowTitle(
+			window,
+			aras.getResource('', 'frames.item_form', '@(itemTypeInfo.Name)')
+		);
+	</script>
+	@if (body == null)
+	{
+		<script>
+			aras.AlertError(this.getResource("", "ui_methods_ex.body_of_form_missing"), "", "");
+		</script>
+	}
+	else
+	{
+		<script>
+			var paramName = "_@(formId)_params";
+			var params = {};
+			// window.dialogArguments is not null in the iframe which is part of page opened in the dialog, in this case parameters will be retrieved from window.parent
+			// if form is opened directly in the dialog, then window.parent will be equal to window, when in case of iframe window.parent will point to window on which frame is defined
+			if(window.dialogArguments && window.parent == window) {
+				params = window.dialogArguments;
+			} else if (window.parent) {
+				params = window.parent.windowArgumentsExchange[paramName];
+			} else if (window.opener) {
+				params = window.opener.windowArgumentsExchange[paramName];
+			}
+
+			if (params) {
+				document.item = params.item;
+				document.itemNd = params.itemNd;
+				document.itemID = params.itemID;
+				document.itemTypeName = params.itemTypeName;
+				document.itemType = params.itemType;
+				document.thisItem = params.thisItem;
+				document.itemTypeNd = params.itemTypeNd;
+				document.itemTypeID = params.itemTypeID;
+				document.viewMode = params.viewMode;
+				document.isEditMode = params.isEditMode;
+				document.isTemp = params.isTemp;
+				document.formID = params.formID;
+				document.formNd = params.formNd;
+				document.userChangeHandler = params.userChangeHandler;
+			}
+		</script>
+		<script type="text/javascript" src="@Url.ContentWithSalt("~/javascript/include.aspx?classes=/dojo.js,ComponentFieldClassStructureHelper")" data-dojo-config="isDebug: false, parseOnLoad: true, baseUrl:'../javascript/dojo'"></script>
+		<link rel="stylesheet" type="text/css" href="@Url.ContentWithSalt("~/javascript/dijit/themes/claro/claro.css")" />
+		<link rel="stylesheet" type="text/css" href="@Url.ContentWithSalt("~/javascript/dojox/grid/resources/claroGrid.css")" />
+		<link rel="stylesheet" type="text/css" href="@Url.ContentWithSalt("~/styles/common.min.css")" />
+		<style type="text/css">@@import "@Url.ContentWithSalt("~/javascript/include.aspx?classes=common.css")";</style>
+		<link rel="stylesheet" type="text/css" href="@Url.ContentWithSalt("~/styles/innovatorForm.css")" />if (form.StyleSheet != null) { <link rel="stylesheet" type="text/css" href="@(form.StyleSheet)" />}
+
+		{ /*Body CSS rendering*/}
+		@await Html.PartialAsync("Partial/FormBody", body)
+
+		{ /*Form Field Css Rendering*/}
+		@await Html.PartialAsync("Partial/FormFieldsCss", fields)
+
+		if (mode != "view_form" && mode != "edit_form")
+		{
+			<script defer type="text/javascript" src="@Url.ContentWithSalt("~/javascript/include.aspx?classes=formInstance")"></script>
+			<script type="text/javascript">
+				window.addEventListener('DOMContentLoaded', function() {
+					ArasModules.soap(null, {async: true, url: aras.getServerURL(), headers: aras.getHttpHeadersForSoapMessage('ApplyItem')});
+				});
+			</script>
+		}
+		else if (mode == "edit_form" || (mode == "view_form" && isTemp))
+		{
+			<script defer type="text/javascript" id="formtool_mouse" src="@Url.ContentWithSalt("~/javascript/formtool_mouse.js")"></script>
+		}
+		<base href="@(scriptsUrl)" />
+	}
+	</head>
+	@if (body != null)
+	{
+		@:<body class="claro body_@(mode)">
+
+		if (mode == "view_form" || mode == "edit_form")
+		{
+			<script type="text/javascript">
+				onerror = function onerror_handler()
+				{
+					return true;
+				}
+			</script>
+		}
+
+		<script type="text/javascript">
+			let _isEditMode = @(JsonSerializer.Serialize(mode == "edit" || mode == "edit_form" || mode == "add"));
+			Object.defineProperty(document, 'isEditMode', {
+				get: () => _isEditMode,
+				set: (newValue) => {
+					_isEditMode = newValue;
+					const formElement = document.forms.MainDataForm;
+					if (formElement) {
+						formElement.classList.toggle('aras-form_edit-mode', newValue);
+					}
+				}
+			});
+		</script>
+
+		<script type="text/javascript">
+			document.mode = @(JsonSerializer.Serialize(mode == "edit" || mode == "search" || mode == "add"));@{ /*TODO: Delete document.mode using*/}
+			window.addEventListener("load", function () {
+				document.isEditMode = document.isEditMode;
+				//register shortcuts
+				if(window.parent.ITEM_WINDOW && window.parent !== window) {
+					window.parent.ITEM_WINDOW.registerStandardShortcuts(window, true);
+				}
+			}, false);
+		</script>
+
+		if (!itemTypeInfo.IsNull && !String.IsNullOrEmpty(itemTypeInfo.Id))
+		{
+			<script type="text/javascript">
+				if (document.itemType == undefined)
+				{
+					document.itemType = aras.getItemTypeForClient("@(itemTypeInfo.Id)", "id").node;
+					document.itemTypeName = "@(itemTypeInfo.Name)";
+				}
+			</script>
+		}
+
+		if (mode != "view_form" && mode != "edit_form")
+		{
+			if (mode != "search")
+			{
+				// Form Event Rendering
+				@await Html.PartialAsync("Partial/FormEvents", form.Relationships.Items.Where(item => item.Type == ItemNodeType.FormEvent).ToList())
+			}
+
+			<script type="text/javascript">
+				document.isFormPopulated = false;
+				function validateFieldValueByPropEvent(propNm, newValue, options = {showPostfix: false}) {
+					// This check is needed for skip custom form without itemType
+					// ex: publish document dialog in TGV, dialog for add favorite search
+					if (!window.document.itemTypeNd || !window.document.itemID) {
+						return {
+							valid: true,
+						};
+					}
+					const itemTypeName = window.document.itemTypeNd.getAttribute('type');
+					const postfix = options.showPostfix ? aras.getResource('', 'aras_object.edit_again') : '';
+					const itemType = ArasModules.xmlToODataJson(window.document.itemTypeNd);
+					const itemId = window.document.itemID;
+					const checkResult = ArasModules.metadata.propertyEvents.validate(
+						itemId,
+						propNm,
+						newValue,
+						itemType
+					);
+					if (checkResult.validationMessage) {
+						checkResult.validationMessage = `${checkResult.validationMessage} ${postfix}`
+					}
+					return checkResult;
+				}
+
+				function handleItemChange(propNm, propVal, dataType, datePattern)
+				{
+					var elem = observersHash.getElementById(propNm + "_system");
+					if (!elem) return false;
+					if (!document.isFormPopulated || !document.isEditMode || !document.item) return true;
+					var propVal2 = propVal;
+					if (propVal2.xml != undefined) propVal2 = propVal.getAttribute("id");
+					var notupdateMenu = (document.item.getAttribute("isDirty") == "1");
+					@if (itemTypeInfo.Name == "Field" || itemTypeInfo.Name == "Form"
+						 || itemTypeInfo.Name == "Life Cycle State" || itemTypeInfo.Name == "Activity Template"
+						 || itemTypeInfo.Name == "Workflow Map" || itemTypeInfo.Name == "Workflow Map Path")
+					{
+						<text>
+							var bSkipEdit = (elem.value == propVal2);
+							bSkipEdit = (dataType == 'ml_string' ? (!notupdateMenu && bSkipEdit) : bSkipEdit);
+							if (bSkipEdit)
+							{
+								return true;
+							}
+						</text>
+					}
+					if (elem.value == propVal2) return true;
+					document.item.setAttribute("isDirty", "1");
+					var applyChanges2All = document.applyChanges2All;
+					var neutralValIfNeed = aras.convertToNeutral(propVal, dataType, datePattern);
+					aras.setItemProperty(document.item, propNm, neutralValIfNeed, applyChanges2All, document.itemTypeNd);
+					if (dataType == 'ml_string')
+					{
+						var langCd = aras.getSessionContextLanguageCode();
+						aras.removeItemTranslationAttribute(document.item, propNm, langCd, "is_null");
+						if (neutralValIfNeed === null || neutralValIfNeed === "")
+						{
+							neutralValIfNeed = null;
+						}
+						aras.setItemTranslation(document.item, propNm, neutralValIfNeed, langCd);
+						aras.removeItemPropertyAttribute(document.item, propNm, "is_null");
+						aras.setItemProperty(document.item, propNm, (neutralValIfNeed === null ? "" : neutralValIfNeed));
+						if (neutralValIfNeed === null)
+							aras.setItemPropertyAttribute(document.item, propNm, "is_null", "1");
+					}
+					elem.setValue(propVal2);
+					if (!document.item) return;
+					if ((document.item.getAttribute("action") != "add") && (document.item.getAttribute("action") != "create"))
+						document.item.setAttribute("action", "update");
+
+					if (document.userChangeHandler)
+						document.userChangeHandler(propNm, propVal, notupdateMenu);
+				}
+			</script>
+		}
+		<script type="text/javascript">
+			var bFromSearch = false;
+			var beforeUnloadHandler = function() {
+				if (aras.Browser.isCh()) {
+					//fix for IR-042857. In Chrome 'onchange' event is not triggered on input element if the element has focus (and its value has been changed) and a window closed right after that.
+					//trigger 'blur' event manually on the element in order to not lose input data
+					var focusedElement = document.activeElement;
+					if (focusedElement && ((focusedElement.tagName === 'INPUT' && focusedElement.type === 'text') || focusedElement.tagName === 'TEXTAREA')) {
+						focusedElement.blur();
+					}
+				}
+			}
+
+			window.addEventListener("unload", beforeUnloadHandler);
+			function tearOffItemChangeHandler(propNm, propVal, notupdateMenu) {
+				var topWnd = aras.getMostTopWindowWithAras(window);
+				if (topWnd.opener && !aras.isWindowClosed(topWnd.opener) && topWnd.opener.aras) {
+					var mainTopWindow = topWnd.opener.aras.getMostTopWindowWithAras(window);
+					if (mainTopWindow && mainTopWindow.main && mainTopWindow.main.work && mainTopWindow.main.work.isItemsGrid) {
+						var mainGridFrame = mainTopWindow.main.work;
+						if (document.itemTypeName === mainGridFrame.itemTypeName) {
+							mainGridFrame.updateRow(document.item, notupdateMenu);
+						}
+					}
+				}
+			}
+			if (aras.getMostTopWindowWithAras(window).isTearOff && !document.userChangeHandler)
+				document.userChangeHandler = tearOffItemChangeHandler;
+		</script>
+		var style = "";
+
+		var fieldsHash = new Dictionary<string, string>();
+		var allFields = body.Relationships.Items.Where(item => item.Type == ItemNodeType.Field).Cast<Field>().ToList();
+		foreach (var field in allFields)
+		{
+			fieldsHash[field.Name] = field.Id + "span";
+		}
+		<script type="text/javascript">
+			var tempHashtable = new Object();
+			@foreach (var field in fieldsHash)
+			{
+				@:tempHashtable["@(field.Key)"] = "@(field.Value)";
+			}
+			document.fieldsTab = tempHashtable;
+
+			function getFieldByName(name)
+			{
+				var res = document.fieldsTab[name];
+				return res ? document.getElementById(res) : null;
+			}
+
+			function getFieldComponentByName(name) {
+				var id = document.fieldsTab && document.fieldsTab[name] && document.fieldsTab[name].slice(0, -4);
+				return getFieldComponentById(id);
+			}
+
+			function getFieldComponentById(id) {
+				return window['field' + id + 'Component'];
+			}
+
+		</script>
+		<form id="MainDataForm" novalidate onsubmit="return false;" @Html.Raw(style)>
+			@await Html.PartialAsync("Partial/FormSystemFields", itemTypeInfo) @{ /* Form System Field Rendering */}
+			@{
+				// Parse fields to FieldsToDraw
+				var commonInfo = new FieldToDrawCommonInfo
+				{
+					AllLanguages = Model.AllLanguages,
+					ForeignInfo = Model.ForeignInfo,
+					JSInfo = Model.JSInfo,
+					FilterListInfo = Model.FilterListInfo,
+					ListInfo = Model.ListInfo,
+					ResourceInfo = Model.ResourceInfo,
+					SkipComponents = skipComponents,
+					FormBodyBGColor = body.BGColor.ToString()
+				};
+				var drawer = new FieldsToDraw(allFields, itemTypeInfo, mode, commonInfo);
+				var tmpFields = drawer.GetFields();
+				foreach (var fieldToDraw in tmpFields)
+				{
+					@await Html.PartialAsync("Partial/FieldMain", fieldToDraw)
+				}
+			}
+		</form>
+
+			if (MethodsExUtils.allFieldsEventsFunctions != null && MethodsExUtils.allFieldsEventsFunctions.Any())
+			{
+				<script type="text/javascript">
+					@{
+						foreach (var funcCode in MethodsExUtils.allFieldsEventsFunctions)
+						{
+							string funcCodeVar = funcCode;
+							@Html.Raw(funcCodeVar)
+						}
+					}
+				</script>
+				MethodsExUtils.allFieldsEventsFunctions.Clear();
+				MethodsExUtils.functionsCount = 0;
+			}
+	   
+	   //Add by tz 2023/5/30 窗体控件帮助说明功能
+	   @:<aras-tooltip></aras-tooltip>
+	   @:</body>
+	}
+	</html>

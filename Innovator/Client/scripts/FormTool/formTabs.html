@@ -1,0 +1,563 @@
+﻿<!DOCTYPE html>
+<!-- (c) Copyright by Aras Corporation, 2004-2012. -->
+<html>
+	<head>
+		<script>
+			var aras = parent.aras;
+		</script>
+		<script
+			type="text/javascript"
+			src="../../javascript/include.aspx?classes=polyfillsBundle"
+		></script>
+		<script
+			type="text/javascript"
+			src="../../javascript/include.aspx?classes=/dojo.js"
+			data-dojo-config="isDebug: false, parseOnLoad: false, baseUrl:'../../javascript/dojo'"
+		></script>
+		<script type="text/javascript">
+			var tabbarApplet = null;
+			var fieldEventId = aras.getRelationshipTypeId('Field Event');
+			var formEventId = aras.getRelationshipTypeId('Form Event');
+
+			function initTabbar() {
+				if (!parent.tabbarApplet) {
+					setTimeout(initTabbar, 100);
+					return;
+				}
+				tabbarApplet = parent.tabbarApplet;
+				tabbarApplet.addTab(
+					'fieldType',
+					aras.getResource('', 'formtabs.field_type')
+				);
+				tabbarApplet.addTab(
+					'fieldLabel',
+					aras.getResource('', 'formtabs.field_label')
+				);
+				tabbarApplet.addTab(
+					'fieldPhysical',
+					aras.getResource('', 'formtabs.field_physical')
+				);
+				tabbarApplet.addTab(
+					'fieldBorder',
+					aras.getResource('', 'formtabs.field_border')
+				);
+				tabbarApplet.addTab(
+					'fieldCss',
+					aras.getResource('', 'formtabs.field_css')
+				);
+				tabbarApplet.addTab(
+					fieldEventId,
+					aras.getResource('', 'formtabs.field_event')
+				);
+				tabbarApplet.addTab(
+					'formProperties',
+					aras.getResource('', 'formtabs.form_props')
+				);
+				tabbarApplet.addTab(
+					'formBody',
+					aras.getResource('', 'formtabs.form_body')
+				);
+				tabbarApplet.addTab(
+					formEventId,
+					aras.getResource('', 'formtabs.form_event')
+				);
+				parent.setFlag('tabsFReady', true);
+			}
+
+			var currTabID = '';
+			function onTabSelect(tabID) {
+				if (currTabID === tabID) {
+					return true;
+				}
+				var wasFieldScript;
+				if (
+					currTabID.search(
+						/^fieldType$|^fieldLabel$|^fieldPhysical$|^fieldBorder$|^fieldCss$/
+					) == 0
+				)
+					wasFieldScript = true;
+				else wasFieldScript = false;
+
+				var properties =
+					parent.document.getElementById('properties').contentWindow;
+				if (
+					currTabID.search(/^formProperties$|^formBody$/) == 0 ||
+					(wasFieldScript && tabID == fieldEventId)
+				) {
+					if (properties.document.forms.MainDataForm) {
+						properties.document.forms.MainDataForm.style.display = 'none';
+					}
+				}
+
+				currTabID = tabID;
+
+				if (tabID.search(/^field/) == 0 || tabID == fieldEventId)
+					return onFieldTabSelect(tabID, wasFieldScript);
+				else if (tabID.search(/^form/) == 0 || tabID == formEventId)
+					return onFormTabSelect(tabID);
+			}
+
+			function posSpan(doc, spanID, x, y, visible) {
+				var spanElem = doc.getElementById(spanID + 'span');
+				if (spanElem) {
+					spanElem.style.left = x + 'px';
+					spanElem.style.top = y + 'px';
+					spanElem.classList.toggle('aras-invisible', visible !== 'visible');
+				}
+			}
+
+			function setVisible(doc, spanID, visible) {
+				var spanElem = doc.getElementById(spanID + 'span');
+				if (spanElem) {
+					spanElem.classList.toggle('aras-invisible', visible !== 'visible');
+				}
+			}
+
+			var elemName2ID = null;
+			function loadMainDataForm(tabID, wasFieldScript) {
+				var fields = parent.fieldGrid;
+				var properties =
+					parent.document.getElementById('properties').contentWindow;
+				var doc = properties.document;
+				if (!doc.forms.MainDataForm) return;
+				var funcSetVisible = setVisible;
+				var elemName = elemName2ID;
+				var array = [
+					{ name: 'show_help', x: 519, y: 10 },	//Add by tz 2023/5/30 窗体控件帮助说明功能
+					{ name: 'propertytype_id', x: 11, y: 58 },
+					{ name: 'bg_color', x: 10, y: 82 },
+					{ name: 'display_length', x: 300, y: 10 },
+					{ name: 'display_length_unit', x: 502, y: 10 },
+					{ name: 'orientation', x: 275, y: 10 },
+					{ name: 'textarea_rows', x: 300, y: 10 },
+					{ name: 'textarea_cols', x: 300, y: 34 },
+					{ name: 'listbox_size', x: 275, y: 10 },
+					{ name: 'list_no_blank', x: 275, y: 34 },
+					{ name: 'html_code', x: 280, y: 10 },
+					{ name: 'label', x: 16, y: 10 },
+					{ name: 'label_position', x: 16, y: 34 },
+					{ name: 'text_align', x: 10, y: 58 },
+					{ name: 'font_family', x: 252, y: 10 },
+					{ name: 'font_weight', x: 250, y: 34 },
+					{ name: 'font_size', x: 265, y: 58 },
+					{ name: 'font_color', x: 258, y: 82 },
+					{ name: 'positioning', x: 10, y: 10 },
+					{ name: 'x', x: 64, y: 34 },
+					{ name: 'y', x: 64, y: 58 },
+					{ name: 'z_index', x: 180, y: 58 },
+					{ name: 'width', x: 292, y: 34 },
+					{ name: 'height', x: 288, y: 58 },
+					{ name: 'is_visible', x: 28, y: 96 },
+					{ name: 'clip_rectangle', x: 246, y: 10 },
+					{ name: 'clip_overflow', x: 250, y: 34 },
+					{ name: 'tab_index', x: 168, y: 34 },
+					{ name: 'tab_stop', x: 317, y: 10 },
+					{ name: 'legend', x: 68, y: 10 },
+					{ name: 'border_width', x: 38, y: 34 },
+					{ name: 'is_disabled', x: 100, y: 96 },
+					{ name: 'container', x: 23, y: 58 },
+					{ name: 'css', x: 10, y: 10 },
+					{ name: 'sort_order', x: 160, y: 10 },
+					{ name: 'xclass_text_width', x: 14, y: 34 },
+					{ name: 'xclass_field_width', x: 10, y: 58 }
+				];
+
+				if (!wasFieldScript) {
+					var funcPosSpan = posSpan;
+					doc.userChangeHandler = handleFieldChange;
+					doc.forms.MainDataForm.style.visibility = 'hidden';
+					funcPosSpan(doc, elemName['name'], 45, 10, 'hidden');
+					funcPosSpan(doc, elemName['field_type'], 20, 34, 'hidden');
+					if (parent.dataSourceOptions) {
+						var win = doc.defaultView;
+						var dropdownField =
+							win['field' + elemName['propertytype_id'] + 'Component'];
+						var optionsArray = [];
+						parent.dataSourceOptions.forEach(function (option) {
+							optionsArray.push({ value: option.value, label: option.label });
+						});
+						dropdownField.component.state.list = optionsArray;
+						var propertytypeSpan = properties.observersHash.getElementById(
+							'propertytype_id_system'
+						);
+						var value = propertytypeSpan.getValue();
+						propertytypeSpan.setValue('');
+						propertytypeSpan.setValue(value);
+					}
+
+					for (var i = 0; i < array.length; i += 1) {
+						funcPosSpan(doc, elemName[array[i].name], array[i].x, array[i].y);
+					}
+					doc.forms.MainDataForm.style.visibility = 'visible';
+				} else {
+					doc.forms.MainDataForm.style.visibility = 'hidden';
+					for (var i = 0; i < array.length; i += 1) {
+						funcSetVisible(doc, elemName[array[i].name]);
+					}
+					funcSetVisible(doc, elemName['default_value']);
+					funcSetVisible(doc, elemName['name']);
+					funcSetVisible(doc, elemName['field_type']);
+
+					doc.forms.MainDataForm.style.visibility = 'visible';
+				}
+
+				var fieldType = aras.getNodeElement(fields.currFldNode, 'field_type');
+				if (tabID == 'fieldType') {
+					funcSetVisible(doc, elemName['name'], 'visible');
+					funcSetVisible(doc, elemName['field_type'], 'visible');
+					funcSetVisible(doc, elemName['default_value'], 'visible');
+					funcSetVisible(doc, elemName['propertytype_id'], 'visible');
+					funcSetVisible(doc, elemName['bg_color'], 'visible');
+
+					if (
+						fieldType.search(
+							/^text$|^password$|^item$|^date$|^file item$|^dropdown/
+						) == 0
+					) {
+						funcSetVisible(doc, elemName['display_length'], 'visible');
+						funcSetVisible(doc, elemName['display_length_unit'], 'visible');
+						if (fieldType == 'dropdown') {
+							funcSetVisible(doc, elemName['list_no_blank'], 'visible');
+						}
+					} else if (
+						'radio button list' == fieldType ||
+						'checkbox list' == fieldType
+					) {
+						funcSetVisible(doc, elemName['orientation'], 'visible');
+					} else if ('groupbox' == fieldType) {
+						funcSetVisible(doc, elemName['orientation'], 'visible');
+						funcSetVisible(doc, elemName['propertytype_id'], 'hidden');
+					} else if (fieldType.search(/^textarea$|^formatted text$/) == 0) {
+						funcSetVisible(doc, elemName['textarea_rows'], 'visible');
+						funcSetVisible(doc, elemName['textarea_cols'], 'visible');
+						funcSetVisible(doc, elemName['display_length_unit'], 'visible');
+					} else if (fieldType.search(/^list/) == 0) {
+						funcSetVisible(doc, elemName['list_no_blank'], 'visible');
+						funcSetVisible(doc, elemName['listbox_size'], 'visible');
+					} else if (fieldType == 'html') {
+						funcSetVisible(doc, elemName['html_code'], 'visible');
+					} else if (fieldType == 'xclass') {
+						funcSetVisible(doc, elemName['xclass_field_width'], 'visible');
+						funcSetVisible(doc, elemName['xclass_text_width'], 'visible');
+						funcSetVisible(doc, elemName['field_type'], 'hidden');
+						funcSetVisible(doc, elemName['propertytype_id'], 'hidden');
+					}
+				} else if (tabID == 'fieldLabel') {
+					//Add by tz 2023/5/30 窗体控件帮助说明功能
+					funcSetVisible(doc, elemName['show_help'], 'visible');
+					funcSetVisible(doc, elemName['label'], 'visible');
+					funcSetVisible(doc, elemName['label_position'], 'visible');
+					funcSetVisible(doc, elemName['text_align'], 'visible');
+					funcSetVisible(doc, elemName['font_family'], 'visible');
+					funcSetVisible(doc, elemName['font_weight'], 'visible');
+					funcSetVisible(doc, elemName['font_size'], 'visible');
+					funcSetVisible(doc, elemName['font_color'], 'visible');
+					if (fieldType === 'xclass') {
+						funcSetVisible(doc, elemName['label_position'], 'hidden');
+						funcSetVisible(doc, elemName['text_align'], 'hidden');
+					}
+				} else if (tabID == 'fieldPhysical') {
+					funcSetVisible(doc, elemName['positioning'], 'visible');
+					funcSetVisible(doc, elemName['x'], 'visible');
+					funcSetVisible(doc, elemName['y'], 'visible');
+					funcSetVisible(doc, elemName['z_index'], 'visible');
+					funcSetVisible(doc, elemName['is_visible'], 'visible');
+					funcSetVisible(doc, elemName['tab_index'], 'visible');
+					funcSetVisible(doc, elemName['tab_stop'], 'visible');
+					funcSetVisible(doc, elemName['is_disabled'], 'visible');
+					funcSetVisible(doc, elemName['sort_order'], 'visible');
+					if (fieldType == 'image') {
+						funcSetVisible(doc, elemName['height'], 'visible');
+						funcSetVisible(doc, elemName['width'], 'visible');
+					}
+				} else if (tabID == 'fieldBorder') {
+					funcSetVisible(doc, elemName['container'], 'visible');
+					funcSetVisible(doc, elemName['legend'], 'visible');
+					funcSetVisible(doc, elemName['border_width'], 'visible');
+				} else if (tabID == 'fieldCss') {
+					funcSetVisible(doc, elemName['css'], 'visible');
+				}
+			}
+
+			function onFieldTabSelect(tabID, wasFieldScript) {
+				var fields = parent.fieldGrid;
+				var properties =
+					parent.document.getElementById('properties').contentWindow;
+
+				if (!fields.currFldNode) {
+					properties.location.replace(parent.emptyPage);
+					return true;
+				}
+
+				// disable field border and fiend events tabs in case xClasses form control field
+				if (
+					aras.getItemProperty(fields.currFldNode, 'field_type') === 'xclass'
+				) {
+					if (tabID === 'fieldBorder' || tabID === fieldEventId) {
+						tabbarApplet.selectTab('fieldType');
+						return;
+					}
+					tabbarApplet.SetTabEnabled('fieldBorder', false);
+					tabbarApplet.SetTabEnabled(fieldEventId, false);
+				} else {
+					tabbarApplet.SetTabEnabled('fieldBorder', true);
+					tabbarApplet.SetTabEnabled(fieldEventId, true);
+				}
+
+				if (tabID == fieldEventId) {
+					properties.location.replace(
+						aras.getScriptsURL() +
+							'relationships.html' +
+							'?db=' +
+							aras.getDatabase() +
+							'&ITName=Field&itemID=' +
+							fields.currFldID +
+							'&editMode=' +
+							(parent.isEditMode ? 1 : 0) +
+							'&relTypeID=' +
+							parent.fieldevent_id_const +
+							'&tabbar=0&toolbar=1&where=formtool'
+					);
+				} else {
+					if (!wasFieldScript) {
+						if (parent.itemType) {
+							if (parent.dataSourceOptions == undefined) {
+								var propNds = parent.itemType.selectNodes(
+									"Relationships/Item[@type='Property' and " +
+										"(not(@action) or (@action!='delete' or @action!='purge'))]"
+								);
+								var propsArr = [];
+								for (var i = 0; i < propNds.length; i += 1) {
+									var propNd = propNds[i];
+									propsArr.push({
+										id: propNd.getAttribute('id'),
+										name: aras.getNodeElement(propNd, 'name')
+									});
+								}
+
+								propsArr.sort(function (obj1, obj2) {
+									var a = obj1.name;
+									var b = obj2.name;
+									if (a < b) return -1;
+									else if (a === b) return 0;
+									else if (a > b) return 1;
+								});
+
+								var options = propsArr.map(function (property) {
+									var option = document.createElement('option');
+									option.value = property.id;
+									option.id = property.id;
+									option.text = property.name;
+									return option;
+								});
+
+								parent.dataSourceOptions = options;
+							}
+						} //^^^^^ populating data source list
+
+						if (!elemName2ID) {
+							elemName2ID = {};
+							var fieldForm = aras.getFormForDisplay(
+								parent.formfield_id_const
+							).node;
+							var fieldNds = fieldForm.selectNodes(
+								"Relationships/Item[@type='Body']/Relationships/Item[@type='Field']"
+							);
+							var fieldNd;
+							for (var i = 0; i < fieldNds.length; i += 1) {
+								fieldNd = fieldNds[i];
+								elemName2ID[aras.getNodeElement(fieldNd, 'name')] =
+									fieldNd.getAttribute('id');
+							}
+						}
+						var fn = function () {
+							loadMainDataForm(tabID, wasFieldScript);
+							this.removeEventListener('load', fn);
+						};
+						parent.document
+							.getElementById('properties')
+							.addEventListener('load', fn);
+						aras.uiShowItemInFrameEx(
+							properties,
+							fields.currFldNode,
+							parent.isEditMode ? 'edit' : 'view'
+						);
+						return;
+					}
+					loadMainDataForm(tabID, wasFieldScript);
+				}
+			}
+
+			function onFormTabSelect(tabID) {
+				var properties =
+					parent.document.getElementById('properties').contentWindow;
+				if (!parent.currFormNd) {
+					properties.location.replace(parent.emptyPage);
+					return true;
+				}
+
+				if (tabID == 'formProperties') {
+					aras.uiShowItemInFrameEx(
+						properties,
+						parent.currFormNd,
+						parent.isEditMode ? 'edit' : 'view',
+						undefined,
+						undefined,
+						undefined,
+						handleFormChange
+					);
+					properties.document.userChangeHandler = handleFormChange;
+				} else if (tabID == 'formBody') {
+					if (parent.currBodyNd) {
+						aras.uiShowItemInFrameEx(
+							properties,
+							parent.currBodyNd,
+							parent.isEditMode ? 'edit' : 'view',
+							undefined,
+							undefined,
+							undefined,
+							handleBodyChange
+						);
+						properties.document.userChangeHandler = handleBodyChange;
+					} else {
+						properties.location.replace(parent.emptyPage);
+						return true;
+					}
+				} else if (tabID == formEventId) {
+					properties.location.replace(
+						aras.getScriptsURL() +
+							'relationships.html' +
+							'?db=' +
+							aras.getDatabase() +
+							'&ITName=Form&itemID=' +
+							parent.currFormId +
+							'&editMode=' +
+							(parent.isEditMode ? 1 : 0) +
+							'&relTypeID=' +
+							parent.formevent_id_const +
+							'&tabbar=0&toolbar=1&where=formtool'
+					);
+				} else if (tabID == 'formAccess') {
+					properties.location.replace(
+						aras.getScriptsURL() +
+							'relationships.html' +
+							'?db=' +
+							aras.getDatabase() +
+							'&ITName=Form&itemID=' +
+							parent.currFormId +
+							'&editMode=' +
+							(parent.isEditMode ? 1 : 0) +
+							'&relTypeID=' +
+							parent.access_id_const +
+							'&tabbar=0&toolbar=1&where=formtool'
+					);
+				}
+			}
+
+			function onload_handler() {
+				parent.createTabBar(onTabSelect);
+				initTabbar();
+			}
+			window.addEventListener('load', onload_handler, false);
+
+			function refreshFormInCanvas() {
+				aras.uiShowItemInFrameEx(
+					parent.document.getElementById('canvas').contentWindow,
+					undefined,
+					'edit_form',
+					0,
+					parent.getFormNdForView()
+				);
+			}
+
+			function handleFormChange(
+				propNm,
+				propVal,
+				isFromBodyOrFieldChange,
+				doRefreshInCanvas
+			) {
+				var formNd = parent.currFormNd;
+				if (isFromBodyOrFieldChange) {
+					propNm = 'name';
+					propVal = aras.getItemProperty(formNd, propNm) || '';
+				}
+
+				aras.setItemProperty(formNd, propNm, propVal);
+				if (formNd.getAttribute('action') !== 'add') {
+					formNd.setAttribute('action', 'update');
+				}
+
+				if (
+					(!isFromBodyOrFieldChange && propNm == 'stylesheet') ||
+					doRefreshInCanvas
+				) {
+					refreshFormInCanvas();
+				}
+			}
+
+			function handleBodyChange(propertyName, propertyValue) {
+				var doRefresh = propertyName.search(/^margin_/) == -1;
+				handleFormChange(null, null, true, doRefresh);
+			}
+
+			function handleFieldChange(propertyName, propertyValue) {
+				var fields = parent.fieldGrid,
+					fieldNode = fields.currFldNode,
+					tools = parent.document.getElementById('tools').contentWindow,
+					canvas = parent.document.getElementById('canvas').contentWindow;
+
+				handleFormChange(null, null, true, false);
+
+				if (propertyName == 'field_type' && currTabID == 'fieldType') {
+					onFieldTabSelect('fieldType', true);
+				} else if (propertyName == 'name') {
+					if (fields.currFldID) {
+						fields.grid.items_Experimental.set(
+							fields.currFldID,
+							'value',
+							'fields',
+							propertyValue
+						);
+					}
+				} else if (propertyName == 'propertytype_id') {
+					tools.modifyAvailDataSources();
+				}
+
+				if (fieldNode) {
+					var spanElement = canvas.document.getElementById(
+						fieldNode.getAttribute('id') + 'span'
+					);
+
+					if (spanElement) {
+						var propertyNode = parent.itemType
+								? parent.itemType.selectSingleNode(
+										"Relationships/Item[@id='" +
+											aras.getNodeElement(fieldNode, 'propertytype_id') +
+											"' and @type='Property']"
+								  )
+								: null,
+							isFormReloadRequired =
+								propertyName == 'css' ||
+								propertyName == 'container' ||
+								propertyName == 'sort_order';
+
+						if (isFormReloadRequired) {
+							refreshFormInCanvas();
+						} else {
+							var newContent = aras.uiDrawFieldEx(
+								fieldNode,
+								propertyNode,
+								'edit_form'
+							);
+
+							spanElement.outerHTML = newContent;
+							fields.selectField(fields.currFldID);
+						}
+					}
+				}
+
+				return true;
+			}
+		</script>
+	</head>
+</html>

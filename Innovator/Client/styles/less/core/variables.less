@@ -1,0 +1,196 @@
+@import '../mixins/mixins';
+
+@font-family: Roboto, 'Noto Sans JP', Arial, sans-serif;
+@font-size: 0.75em; //For set font size in 12px. (default browser font size 16px)
+@default-line-height: 1.2;
+@font-10-med: 500 0.833333rem / @default-line-height @font-family;
+@font-12-reg: normal 1rem / @default-line-height @font-family;
+@font-12-reg-it: normal italic 1rem / @default-line-height @font-family;
+@font-12-med: 500 1rem / @default-line-height @font-family;
+@font-12-med-it: 500 italic 1rem / @default-line-height @font-family;
+@font-12-bold: bold 1rem / @default-line-height @font-family;
+@font-14-reg: normal 1.166667rem / @default-line-height @font-family;
+@font-14-med: 500 1.166667rem / @default-line-height @font-family;
+@font-14-med-it: 500 italic 1.166667rem / @default-line-height @font-family;
+@font-20-med: 500 1.666667rem / @default-line-height @font-family;
+@font-14-bold: bold 1.166667rem / @default-line-height @font-family;
+@font-16-reg: normal 1.333rem / @default-line-height @font-family;
+@font-16-med: 500 1.333rem / @default-line-height @font-family;
+@font-16-bold: bold 1.333rem / @default-line-height @font-family;
+@font-18-bold: bold 1.5rem / @default-line-height @font-family;
+@font-20-bold: bold 1.666667rem / @default-line-height @font-family;
+@font-20-bold-it: bold italic 1.666667rem / @default-line-height @font-family;
+@font-10-reg: normal 0.833rem / @default-line-height @font-family;
+@font-10-reg-it: italic 0.833rem / @default-line-height @font-family;
+@font-10-bold: bold 0.833rem / @default-line-height @font-family;
+
+//Main colors
+@blue: #3668b1;
+@blue-hover: #5e86c1;
+@blue-disable: #dde7f5;
+@gray: #5f6871;
+@gray-disable: #b3b3b3;
+@gray-light-disable: #dadada;
+@border-color: #505050;
+@border-light-color: #b4b4b4;
+@controls-bg: #ffffff;
+@container-border-color: #d3d3d3;
+@dropdown-border-color: #6b6b6b;
+
+@white: #ffffff;
+@neutral-f: #ffffff;
+@neutral-fb: #fbfbfb;
+@neutral-f7: #f7f7f7;
+@neutral-e: #eeeeee;
+@neutral-d: #dddddd;
+@neutral-c: #cccccc;
+@neutral-a: #aaaaaa;
+@neutral-9: #999999;
+@neutral-7: #707070;
+@neutral-5: #555555;
+@neutral-3: #333333;
+@neutral-1: #111111;
+
+@color-1: #e7e9ee;
+@color-2: #e2e6f3;
+@color-3: #dce3f9;
+@color-4: #d7e1fe;
+@color-5: #afb3c5;
+@color-6: #9da6d8;
+@color-7: #8a9aea;
+@color-8: #778efd;
+@color-9: #777a9c;
+@color-10: #5760bc;
+@color-11: #3845dc;
+@color-12: #182bfb;
+@color-13: #4b4b68;
+@color-14: #333380;
+@color-15: #1b1b98;
+@color-16: #0303b0;
+@color-17: #23222f;
+@color-18: #1a173a;
+@color-19: #110c45;
+@color-20: #080150;
+
+@color-sel-1: #fefbd7;
+@color-sel-2: #fef7af;
+@color-sel-3: #fdf386;
+
+@theme-main: #0303b0;
+@theme-primary: #182bfb;
+@theme-secondary: #4b4b68;
+@theme-subtle: #e2e6f3;
+@theme-highlight: #fef7af;
+
+// Standard Hues (Design System)
+@cyan-50: #e0f7fa;
+@cyan-200: #80deea;
+@cyan-400: #26c6da;
+@cyan-700: #0097a7;
+@cyan-900: #006064;
+
+@blue-50: #e3f2fd;
+@blue-200: #90caf9;
+@blue-400: #42a5f5;
+@blue-700: #1976d2;
+@blue-900: #0d47a1;
+//Add by tz 2023/5/30 窗体控件帮助说明功能
+@blue-5: #0d47a1;
+
+@blue-grey-50: #eceff1;
+@blue-grey-200: #b0bec5;
+@blue-grey-400: #78909c;
+@blue-grey-700: #455a64;
+@blue-grey-900: #263238;
+
+@brown-50: #efebe9;
+@brown-200: #bcaaa4;
+@brown-400: #8d6e63;
+@brown-700: #5d4037;
+@brown-900: #3e2723;
+
+@chartreuse-50: #f1fbe7;
+@chartreuse-200: #c2ef9c;
+@chartreuse-400: #90e249;
+@chartreuse-700: #4eb600;
+@chartreuse-900: #008000;
+
+@deep-orange-50: #fbe9e7;
+@deep-orange-200: #ffab91;
+@deep-orange-400: #ff7043;
+@deep-orange-700: #e64a19;
+@deep-orange-900: #bf360c;
+
+@green-50: #e8f5e9;
+@green-200: #a5d6a7;
+@green-400: #66bb6a;
+@green-700: #388e3c;
+@green-900: #1b5e20;
+
+@indigo-50: #e8eaf6;
+@indigo-200: #9fa8da;
+@indigo-400: #5c6bc0;
+@indigo-700: #303f9f;
+@indigo-900: #1a237e;
+
+@orange-50: #fff3e0;
+@orange-200: #ffcc80;
+@orange-400: #ffa726;
+@orange-700: #f57c00;
+@orange-900: #e65100;
+
+@purple-50: #f3e5f5;
+@purple-200: #ce93d8;
+@purple-400: #ab47bc;
+@purple-700: #7b1fa2;
+@purple-900: #4a148c;
+
+@red-50: #ffebee;
+@red-200: #ef9a9a;
+@red-400: #ef5350;
+@red-700: #d32f2f;
+@red-900: #b71c1c;
+
+@teal-50: #e0f2f1;
+@teal-200: #80cbc4;
+@teal-400: #26a69a;
+@teal-700: #00796b;
+@teal-900: #004d40;
+
+@crimson-5: #cc1c1c;
+
+//Font colors
+@font-color: @neutral-3;
+@font-color-disable: #808080;
+@font-color-button: #ffffff;
+
+@head-color-1: #ebe9e9;
+
+@shadow-a: 0 1px 2px rgba(0, 0, 0, 0.08), 0 1px 1px rgba(0, 0, 0, 0.16);
+@shadow-a-2: 0 1px 1px rgba(0, 0, 0, 0.08), 0 1px 0 rgba(0, 0, 0, 0.2);
+@shadow-b: 0 1px 3px rgba(0, 0, 0, 0.16), 0 1px 2px rgba(0, 0, 0, 0.24);
+@shadow-c: 0 2px 4px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.24);
+@shadow-d: 0 5px 8px rgba(0, 0, 0, 0.24), 0 3px 4px rgba(0, 0, 0, 0.24);
+@shadow-e: 0 16px 36px rgba(0, 0, 0, 0.32), 0 8px 12px rgba(0, 0, 0, 0.24);
+@shadow-focus-1-i: 0 0 0 2px @color-16 inset;
+@shadow-focus-2: 0 0 0 1px @neutral-f, 0 0 0 3px @color-16;
+@shadow-x: 0 1px 3px rgba(0, 0, 0, 0.16), 0 1px 2px rgba(0, 0, 0, 0.56);
+@shadow-y: 0 1px 4px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.32);
+@shadow-f-1b: inset 0px 0px 0px 1px @theme-main;
+@shadow-f-4b: @shadow-x, inset 0 0 0 1px @theme-main, inset 0 0 0 2px @neutral-f;
+
+@shadow-a-i: 0 1px 2px rgba(0, 0, 0, 0.08) inset,
+	0 1px 1px rgba(0, 0, 0, 0.16) inset;
+@shadow-b-i: 0 1px 3px rgba(0, 0, 0, 0.16) inset,
+	0 1px 2px rgba(0, 0, 0, 0.24) inset;
+
+@tablet-max: ~'only screen and (max-width: 693px)';
+
+@icon-16: 16px;
+@icon-18: 18px;
+@icon-20: 20px;
+@icon-24: 24px;
+@icon-32: 32px;
+@icon-48: 48px;
+
+@grid-img-size: .pxToRem(16px) [ @rem ];
